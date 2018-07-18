@@ -1,0 +1,3 @@
+rootProject.name = 'conjure-examples'
+
+include 'conjure-examples-server'

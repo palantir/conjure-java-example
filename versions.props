@@ -1,0 +1,6 @@
+com.google.guava:guava = 21.0
+junit:junit = 4.12
+org.assertj:assertj-core = 3.10.0
+org.immutables:* = 2.6.1
+org.mockito:mockito-core = 2.19.1
+org.slf4j:* = 1.7.25
