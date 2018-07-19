@@ -1,3 +1,4 @@
-rootProject.name = 'conjure-examples'
+rootProject.name = 'conjure-java-example'
 
-include 'conjure-examples-server'
+include 'example-server'
+include 'example-api'
