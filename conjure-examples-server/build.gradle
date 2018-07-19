@@ -4,10 +4,11 @@ apply plugin: 'org.inferred.processors'
 dependencies {
     processor 'org.immutables:value'
 
-    implementation 'com.google.guava:guava'
-    implementation 'org.slf4j:slf4j-api'
+    compile 'com.google.guava:guava'
+    compile 'io.dropwizard:dropwizard-core'
+    compile 'org.slf4j:slf4j-api'
 
-    testImplementation 'junit:junit'
-    testImplementation 'org.assertj:assertj-core'
-    testImplementation 'org.mockito:mockito-core'
+    testCompile 'junit:junit'
+    testCompile 'org.assertj:assertj-core'
+    testCompile 'org.mockito:mockito-core'
 }
