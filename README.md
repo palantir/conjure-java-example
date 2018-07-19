@@ -1,6 +1,6 @@
-conjure-examples
-============
-A simple Java project.
+conjure-java-example
+===================
+A simple dropwizard backend application that uses conjure bindings. 
 
 Gradle Tasks
 ------------

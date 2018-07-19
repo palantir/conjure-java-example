@@ -10,6 +10,7 @@
 .factorypath
 .project
 .settings
+*.launch
 
 # Codegen
 .generated

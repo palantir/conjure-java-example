@@ -1,6 +1,7 @@
 apply from: "${rootDir}/gradle/java.gradle"
-apply plugin: 'org.inferred.processors'
 apply plugin: 'application'
+apply plugin: 'com.palantir.launch-config'
+apply plugin: 'org.inferred.processors'
 
 dependencies {
     processor 'org.immutables:value'

@@ -4,5 +4,17 @@ server:
     - type: http
       port: 8000
   rootPath: /api/*
-recipes: []
+recipes:
+  - name: "roasted brococoli with garlic"
+    steps:
+      - type: chop
+        chop: "3 cloves of galic"
+      - type: mix
+        mix: ["2 tbsp extra olive oil", "chopped galic"]
+      - type: bake
+        bake:
+          temperature:
+            degree: 230
+            unit: "C"
+          durationInSeconds: 1200
 

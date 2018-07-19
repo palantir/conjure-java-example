@@ -2,13 +2,17 @@ types:
   definitions:
     default-package: com.palantir.conjure.examples
     objects:
+      Temperature:
+        fields:
+          degree: double
+          unit: string
       Ingredient:
         alias: string
       RecipeName:
         alias: string
       BakeStep:
         fields:
-          temperature: double
+          temperature: Temperature
           durationInSeconds: integer
       RecipeStep:
         union:
