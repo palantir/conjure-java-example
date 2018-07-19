@@ -16,14 +16,30 @@
 
 package com.palantir.conjure.examples;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.palantir.conjure.examples.resources.RecipeBookResource;
+import com.palantir.remoting3.ext.jackson.ObjectMappers;
 import io.dropwizard.Application;
+import io.dropwizard.jackson.DiscoverableSubtypeResolver;
+import io.dropwizard.jackson.FuzzyEnumModule;
+import io.dropwizard.logging.BootstrapLogging;
+import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class RecipeBookApplication extends Application<RecipeBookConfiguration> {
 
     public static void main(String[] args) throws Exception {
         new RecipeBookApplication().run(args);
+    }
+
+    @Override
+    public void initialize(Bootstrap<RecipeBookConfiguration> bootstrap) {
+        // use conjure's specific object mapper (optional)
+        ObjectMapper remotingObjectMapper = ObjectMappers.newServerObjectMapper()
+                // need discoverable subtype resolver for polymorphic configuration mechanism
+                .setSubtypeResolver(new DiscoverableSubtypeResolver())
+                .registerModule(new FuzzyEnumModule());
+        bootstrap.setObjectMapper(remotingObjectMapper);
     }
 
     @Override

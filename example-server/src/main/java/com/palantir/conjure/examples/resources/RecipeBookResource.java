@@ -38,5 +38,4 @@ public final class RecipeBookResource implements RecipeBookService {
     public Optional<Recipe> getRecipe(RecipeName name) {
         return Optional.ofNullable(this.recipeMap.get(name));
     }
-
 }
