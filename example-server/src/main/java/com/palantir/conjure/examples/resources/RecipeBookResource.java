@@ -17,36 +17,35 @@
 package com.palantir.conjure.examples.resources;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import com.palantir.comnjure.examples.api.RecipeBookService;
 import com.palantir.conjure.examples.Recipe;
 import com.palantir.conjure.examples.RecipeErrors;
 import com.palantir.conjure.examples.RecipeName;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public final class RecipeBookResource implements RecipeBookService {
 
-    private final Map<RecipeName, Recipe> recipeMap;
+    private final List<Recipe> recipes;
 
     public RecipeBookResource(List<Recipe> recipes) {
-        this.recipeMap = recipes.stream()
-                .collect(Collectors.toMap(Recipe::getName, Function.identity()));
+        this.recipes = ImmutableList.copyOf(recipes);
     }
 
     @Override
     public Recipe getRecipe(RecipeName name) {
         Preconditions.checkNotNull(name, "Recipe name must be provided.");
-        if (!this.recipeMap.containsKey(name)) {
+        Optional<Recipe> maybeRecipe = this.recipes.stream().filter(r -> r.getName().equals(name)).findAny();
+        if (!maybeRecipe.isPresent()) {
             throw RecipeErrors.recipeNotFound(name);
         }
 
-        return recipeMap.get(name);
+        return maybeRecipe.get();
     }
 
     @Override
     public List<Recipe> getRecipes() {
-        return recipeMap.values().stream().collect(Collectors.toList());
+        return recipes;
     }
 }

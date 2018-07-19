@@ -15,9 +15,11 @@ dependencies {
     compile 'com.palantir.remoting3:jackson-support'
     compile 'com.palantir.remoting3:jersey-servers'
 
+    testCompile 'com.netflix.feign:feign-jackson'
+    testCompile 'com.netflix.feign:feign-jaxrs'
     testCompile 'junit:junit'
     testCompile 'org.assertj:assertj-core'
-    testCompile 'org.mockito:mockito-core'
+    testCompile 'io.dropwizard:dropwizard-testing'
 }
 
 mainClassName = 'com.palantir.conjure.examples.RecipeBookApplication'

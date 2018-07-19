@@ -26,7 +26,7 @@ import io.dropwizard.jackson.FuzzyEnumModule;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class RecipeBookApplication extends Application<RecipeBookConfiguration> {
+public final class RecipeBookApplication extends Application<RecipeBookConfiguration> {
 
     public static void main(String[] args) throws Exception {
         new RecipeBookApplication().run(args);

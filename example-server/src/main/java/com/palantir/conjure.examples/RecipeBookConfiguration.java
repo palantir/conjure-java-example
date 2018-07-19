@@ -20,10 +20,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableList;
 import io.dropwizard.Configuration;
 import java.util.List;
+import org.hibernate.validator.constraints.NotEmpty;
 
-public class RecipeBookConfiguration extends Configuration {
+public final class RecipeBookConfiguration extends Configuration {
 
-//    @NotEmpty
+    @NotEmpty
     private List<Recipe> recipes;
 
     @JsonProperty
