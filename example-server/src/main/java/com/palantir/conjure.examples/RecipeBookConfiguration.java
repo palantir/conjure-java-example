@@ -16,5 +16,23 @@
 
 package com.palantir.conjure.examples;
 
-public class ExampleServerConfiguration {
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.ImmutableList;
+import io.dropwizard.Configuration;
+import java.util.List;
+
+public class RecipeBookConfiguration extends Configuration {
+
+//    @NotEmpty
+    private List<Recipe> recipes;
+
+    @JsonProperty
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    @JsonProperty
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = ImmutableList.copyOf(recipes);
+    }
 }

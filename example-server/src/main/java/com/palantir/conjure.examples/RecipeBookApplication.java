@@ -16,20 +16,19 @@
 
 package com.palantir.conjure.examples;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.palantir.conjure.examples.resources.RecipeBookResource;
+import io.dropwizard.Application;
+import io.dropwizard.setup.Environment;
 
-import org.junit.Test;
+public class RecipeBookApplication extends Application<RecipeBookConfiguration> {
 
-/**
- * Tests {@link ConjureExamples}.
- */
-public final class ConjureExamplesTests {
+    public static void main(String[] args) throws Exception {
+        new RecipeBookApplication().run(args);
+    }
 
-    @Test
-    public void testMessage() {
-        String msg = "test";
-        ConjureExamples conjureexamples = new ConjureExamples(msg);
-
-        assertThat(conjureexamples.getMessage()).isEqualTo(msg);
+    @Override
+    public void run(RecipeBookConfiguration configuration, Environment environment) {
+        RecipeBookResource resource = new RecipeBookResource(configuration.getRecipes());
+        environment.jersey().register(resource);
     }
 }

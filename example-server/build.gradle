@@ -1,8 +1,12 @@
 apply from: "${rootDir}/gradle/java.gradle"
 apply plugin: 'org.inferred.processors'
+apply plugin: 'application'
 
 dependencies {
     processor 'org.immutables:value'
+
+    compile project(':example-api:example-api-objects')
+    compile project(':example-api:example-api-jersey')
 
     compile 'com.google.guava:guava'
     compile 'io.dropwizard:dropwizard-core'
@@ -11,4 +15,9 @@ dependencies {
     testCompile 'junit:junit'
     testCompile 'org.assertj:assertj-core'
     testCompile 'org.mockito:mockito-core'
+}
+
+mainClassName = 'com.palantir.conjure.examples.RecipeBookApplication'
+run {
+    args 'server', 'var/conf/recipes.yml'
 }

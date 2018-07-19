@@ -36,7 +36,9 @@ allprojects {
     apply plugin: 'nebula.dependency-recommender'
 
     group 'com.palantir.conjure.examples'
-    version gitVersion()
+    // TODO: clarify error message
+    // workaround for compileConjureTypescript Error: Expected version to be valid SLS version but found "b02eaaf.dirty"
+    version "0.1.0"
 
     repositories {
         mavenCentral()
@@ -48,5 +50,20 @@ allprojects {
     dependencyRecommendations {
         strategy OverrideTransitives
         propertiesFile file: project.rootProject.file('versions.props')
+    }
+}
+
+configure(subprojects - project(':example-api')) {
+    apply plugin: 'com.palantir.baseline-checkstyle'
+    apply plugin: 'com.palantir.baseline-eclipse'
+    apply plugin: 'com.palantir.baseline-error-prone'
+    apply plugin: 'com.palantir.baseline-idea'
+    apply plugin: 'java-library'
+    apply plugin: 'org.inferred.processors'
+
+    sourceCompatibility = 1.8
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs += ['-XepDisableWarningsInGeneratedCode', '-Werror']
     }
 }
