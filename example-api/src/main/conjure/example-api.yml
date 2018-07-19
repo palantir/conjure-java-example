@@ -2,19 +2,47 @@ types:
   definitions:
     default-package: com.palantir.conjure.examples
     objects:
-      Recipe:
+      Ingredient:
+        alias: string
+      RecipeName:
+        alias: string
+      BakeStep:
         fields:
-          steps: list<RecipeStep>
-
+          temperature: double
+          durationInSeconds: integer
       RecipeStep:
         union:
           mix: set<Ingredient>
           chop: Ingredient
           bake: BakeStep
-
-      BakeStep:
+      Recipe:
         fields:
-          temperature: double
-          durationInSeconds: integer
-      Ingredient:
-        alias: string
+          name: RecipeName
+          steps: list<RecipeStep>
+
+    errors:
+      RecipeNotFound:
+        namespace: Recipe
+        code: NOT_FOUND
+        safe-args:
+          name: RecipeName
+
+services:
+  RecipeBookService:
+    name: Recipe Book
+    package: com.palantir.comnjure.examples.api
+    base-path: /
+    docs: |
+      APIs for retrieving recipes
+
+    endpoints:
+      getRecipe:
+        http: GET /recipes/{name}
+        args:
+         name:
+          type: RecipeName
+        docs: |
+          Retrieves a recipe for the given name.
+
+          @param name
+                 The name of the recipe
