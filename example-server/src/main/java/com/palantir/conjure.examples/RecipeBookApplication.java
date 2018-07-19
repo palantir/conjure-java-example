@@ -35,7 +35,7 @@ public class RecipeBookApplication extends Application<RecipeBookConfiguration> 
     @Override
     public void initialize(Bootstrap<RecipeBookConfiguration> bootstrap) {
         ObjectMapper remotingObjectMapper = ObjectMappers.newServerObjectMapper()
-                // need discoverable subtype resolver for polymorphic configuration mechanism
+                // needs discoverable subtype resolver for DW polymorphic configuration mechanism
                 .setSubtypeResolver(new DiscoverableSubtypeResolver())
                 .registerModule(new FuzzyEnumModule());
         bootstrap.setObjectMapper(remotingObjectMapper);

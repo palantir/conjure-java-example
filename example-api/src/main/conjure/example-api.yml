@@ -51,3 +51,8 @@ services:
 
           @param name
                  The name of the recipe
+      getRecipes:
+        http: GET /recipes
+        returns: list<Recipe>
+        docs: |
+          Returns a list of avaiable recipes in the book.

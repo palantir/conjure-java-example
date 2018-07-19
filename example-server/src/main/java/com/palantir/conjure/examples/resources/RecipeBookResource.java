@@ -44,4 +44,9 @@ public final class RecipeBookResource implements RecipeBookService {
 
         return recipeMap.get(name);
     }
+
+    @Override
+    public List<Recipe> getRecipes() {
+        return recipeMap.values().stream().collect(Collectors.toList());
+    }
 }
