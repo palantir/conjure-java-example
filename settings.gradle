@@ -2,3 +2,5 @@ rootProject.name = 'conjure-java-example'
 
 include 'example-server'
 include 'example-api'
+include 'example-api:example-api-objects'
+include 'example-api:example-api-typescript'

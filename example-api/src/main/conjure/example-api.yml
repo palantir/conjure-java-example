@@ -1,0 +1,20 @@
+types:
+  definitions:
+    default-package: com.palantir.conjure.examples
+    objects:
+      Recipe:
+        fields:
+          steps: list<RecipeStep>
+
+      RecipeStep:
+        union:
+          mix: set<Ingredient>
+          chop: Ingredient
+          bake: BakeStep
+
+      BakeStep:
+        fields:
+          temperature: double
+          durationInSeconds: integer
+      Ingredient:
+        alias: string
