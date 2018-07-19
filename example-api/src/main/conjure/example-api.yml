@@ -45,7 +45,7 @@ services:
         args:
          name:
           type: RecipeName
-        returns: optional<Recipe>
+        returns: Recipe
         docs: |
           Retrieves a recipe for the given name.
 

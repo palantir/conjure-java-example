@@ -13,6 +13,7 @@ dependencies {
     compile 'io.dropwizard:dropwizard-core'
     compile 'org.slf4j:slf4j-api'
     compile 'com.palantir.remoting3:jackson-support'
+    compile 'com.palantir.remoting3:jersey-servers'
 
     testCompile 'junit:junit'
     testCompile 'org.assertj:assertj-core'

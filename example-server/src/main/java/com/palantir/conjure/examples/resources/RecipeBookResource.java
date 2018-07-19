@@ -16,12 +16,13 @@
 
 package com.palantir.conjure.examples.resources;
 
+import com.google.common.base.Preconditions;
 import com.palantir.comnjure.examples.api.RecipeBookService;
 import com.palantir.conjure.examples.Recipe;
+import com.palantir.conjure.examples.RecipeErrors;
 import com.palantir.conjure.examples.RecipeName;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -35,7 +36,12 @@ public final class RecipeBookResource implements RecipeBookService {
     }
 
     @Override
-    public Optional<Recipe> getRecipe(RecipeName name) {
-        return Optional.ofNullable(this.recipeMap.get(name));
+    public Recipe getRecipe(RecipeName name) {
+        Preconditions.checkNotNull(name, "Recipe name must be provided.");
+        if (!this.recipeMap.containsKey(name)) {
+            throw RecipeErrors.recipeNotFound(name);
+        }
+
+        return recipeMap.get(name);
     }
 }
