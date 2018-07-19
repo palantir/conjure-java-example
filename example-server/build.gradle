@@ -1,7 +1,17 @@
-apply from: "${rootDir}/gradle/java.gradle"
+apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'com.palantir.baseline-checkstyle'
+apply plugin: 'com.palantir.baseline-eclipse'
+apply plugin: 'com.palantir.baseline-error-prone'
+apply plugin: 'com.palantir.baseline-idea'
 apply plugin: 'com.palantir.launch-config'
 apply plugin: 'org.inferred.processors'
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-XepDisableWarningsInGeneratedCode', '-Werror']
+}
+
+sourceCompatibility = '1.8'
 
 dependencies {
     processor 'org.immutables:value'
@@ -26,3 +36,4 @@ mainClassName = 'com.palantir.conjure.examples.RecipeBookApplication'
 run {
     args 'server', 'var/conf/recipes.yml'
 }
+

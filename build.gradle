@@ -14,10 +14,10 @@ buildscript {
     dependencies {
         classpath 'com.netflix.nebula:nebula-dependency-recommender:5.2.0'
         classpath 'com.palantir.baseline:gradle-baseline-java:0.20.1'
-        classpath 'com.palantir.launchconfig:gradle-launch-config-plugin:1.2.0'
         classpath 'com.palantir.configurationresolver:gradle-configuration-resolver-plugin:0.3.0'
         classpath 'com.palantir.gradle.conjure:gradle-conjure:4.2.0'
         classpath 'com.palantir.gradle.gitversion:gradle-git-version:0.7.1'
+        classpath 'com.palantir.launchconfig:gradle-launch-config-plugin:1.2.0'
         classpath 'gradle.plugin.com.palantir:gradle-circle-style:1.1.2'
         classpath 'gradle.plugin.org.inferred:gradle-processors:1.2.15'
     }
@@ -51,20 +51,5 @@ allprojects {
     dependencyRecommendations {
         strategy OverrideTransitives
         propertiesFile file: project.rootProject.file('versions.props')
-    }
-}
-
-configure(subprojects - project(':example-api')) {
-    apply plugin: 'com.palantir.baseline-checkstyle'
-    apply plugin: 'com.palantir.baseline-eclipse'
-    apply plugin: 'com.palantir.baseline-error-prone'
-    apply plugin: 'com.palantir.baseline-idea'
-    apply plugin: 'java-library'
-    apply plugin: 'org.inferred.processors'
-
-    sourceCompatibility = 1.8
-
-    tasks.withType(JavaCompile) {
-        options.compilerArgs += ['-XepDisableWarningsInGeneratedCode', '-Werror']
     }
 }
