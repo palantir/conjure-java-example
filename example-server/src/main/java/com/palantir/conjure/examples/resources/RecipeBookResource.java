@@ -39,11 +39,9 @@ public final class RecipeBookResource implements RecipeBookService {
     @Override
     public Recipe getRecipe(RecipeName name) {
         Preconditions.checkNotNull(name, "Recipe name must be provided.");
-        Recipe maybeRecipe = this.recipes.get(name);
-        if (maybeRecipe == null) {
-            throw RecipeErrors.recipeNotFound(name);
-        }
-        return maybeRecipe;
+        checkIfRecipeExists(name);
+
+        return recipes.get(name);
     }
 
     @Override
@@ -58,6 +56,13 @@ public final class RecipeBookResource implements RecipeBookService {
 
     @Override
     public void deleteRecipe(RecipeName name) {
+        checkIfRecipeExists(name);
         recipes.remove(name);
+    }
+
+    private void checkIfRecipeExists(RecipeName name) {
+        if (!this.recipes.containsKey(name)) {
+            throw RecipeErrors.recipeNotFound(name);
+        }
     }
 }
