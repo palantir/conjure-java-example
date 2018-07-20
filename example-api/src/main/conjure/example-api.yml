@@ -26,7 +26,6 @@ types:
 
       Recipe:
         fields:
-          recipeId: uuid
           name: RecipeName
           steps: list<RecipeStep>
 

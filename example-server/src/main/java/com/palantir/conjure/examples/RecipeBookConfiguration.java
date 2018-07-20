@@ -18,6 +18,7 @@ package com.palantir.conjure.examples;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableList;
+import com.palantir.conjure.recipes.api.Recipe;
 import io.dropwizard.Configuration;
 import java.util.List;
 import org.hibernate.validator.constraints.NotEmpty;
