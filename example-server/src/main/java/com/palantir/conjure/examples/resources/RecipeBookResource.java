@@ -17,13 +17,13 @@
 package com.palantir.conjure.examples.resources;
 
 import com.google.common.base.Preconditions;
-import com.palantir.conjure.recipes.api.Recipe;
-import com.palantir.conjure.recipes.api.RecipeBookService;
-import com.palantir.conjure.recipes.api.RecipeErrors;
-import com.palantir.conjure.recipes.api.RecipeName;
-import java.util.ArrayList;
-import java.util.List;
+import com.palantir.conjure.examples.recipes.api.Recipe;
+import com.palantir.conjure.examples.recipes.api.RecipeBookService;
+import com.palantir.conjure.examples.recipes.api.RecipeErrors;
+import com.palantir.conjure.examples.recipes.api.RecipeName;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -31,9 +31,9 @@ public final class RecipeBookResource implements RecipeBookService {
 
     private final Map<RecipeName, Recipe> recipes;
 
-    public RecipeBookResource(List<Recipe> recipes) {
+    public RecipeBookResource(Set<Recipe> recipes) {
         this.recipes = recipes.stream()
-                .collect(Collectors.toMap(Recipe::getName, Function.identity()));
+                .collect(Collectors.toConcurrentMap(Recipe::getName, Function.identity()));
     }
 
     @Override
@@ -52,8 +52,8 @@ public final class RecipeBookResource implements RecipeBookService {
     }
 
     @Override
-    public List<Recipe> getAllRecipes() {
-        return new ArrayList<>(recipes.values());
+    public Set<Recipe> getAllRecipes() {
+        return new HashSet<>(recipes.values());
     }
 
     @Override
