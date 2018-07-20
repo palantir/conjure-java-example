@@ -33,6 +33,7 @@ dependencies {
 }
 
 mainClassName = 'com.palantir.conjure.examples.RecipeBookApplication'
+
 run {
     args 'server', 'var/conf/recipes.yml'
 }

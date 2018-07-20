@@ -17,35 +17,47 @@
 package com.palantir.conjure.examples.resources;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
-import com.palantir.comnjure.examples.api.RecipeBookService;
-import com.palantir.conjure.examples.Recipe;
-import com.palantir.conjure.examples.RecipeErrors;
-import com.palantir.conjure.examples.RecipeName;
+import com.palantir.conjure.recipes.api.Recipe;
+import com.palantir.conjure.recipes.api.RecipeBookService;
+import com.palantir.conjure.recipes.api.RecipeErrors;
+import com.palantir.conjure.recipes.api.RecipeName;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public final class RecipeBookResource implements RecipeBookService {
 
-    private final List<Recipe> recipes;
+    private final Map<RecipeName, Recipe> recipes;
 
     public RecipeBookResource(List<Recipe> recipes) {
-        this.recipes = ImmutableList.copyOf(recipes);
+        this.recipes = recipes.stream()
+                .collect(Collectors.toMap(Recipe::getName, Function.identity()));
     }
 
     @Override
     public Recipe getRecipe(RecipeName name) {
         Preconditions.checkNotNull(name, "Recipe name must be provided.");
-        Optional<Recipe> maybeRecipe = this.recipes.stream().filter(r -> r.getName().equals(name)).findAny();
-        if (!maybeRecipe.isPresent()) {
+        Recipe maybeRecipe = this.recipes.get(name);
+        if (maybeRecipe == null) {
             throw RecipeErrors.recipeNotFound(name);
         }
-
-        return maybeRecipe.get();
+        return maybeRecipe;
     }
 
     @Override
-    public List<Recipe> getRecipes() {
-        return recipes;
+    public void createRecipe(Recipe createRecipeRequest) {
+        recipes.put(createRecipeRequest.getName(), createRecipeRequest);
+    }
+
+    @Override
+    public List<Recipe> getAllRecipes() {
+        return new ArrayList<>(recipes.values());
+    }
+
+    @Override
+    public void deleteRecipe(RecipeName name) {
+        recipes.remove(name);
     }
 }

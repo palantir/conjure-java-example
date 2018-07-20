@@ -53,3 +53,24 @@ allprojects {
         propertiesFile file: project.rootProject.file('versions.props')
     }
 }
+
+configure(subprojects - project(':example-api')) {
+    apply plugin: 'com.palantir.baseline-checkstyle'
+    apply plugin: 'com.palantir.baseline-eclipse'
+    apply plugin: 'com.palantir.baseline-error-prone'
+    apply plugin: 'com.palantir.baseline-idea'
+    apply plugin: 'java-library'
+    apply plugin: 'org.inferred.processors'
+
+    sourceCompatibility = 1.8
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs += ['-XepDisableWarningsInGeneratedCode', '-Werror']
+    }
+
+    // Run `./gradlew test -Drecreate=true` to recreate all the expected
+    // generated code that we have checked into the repo.
+    tasks.withType(Test) {
+        systemProperty 'recreate', System.getProperty('recreate', 'false')
+    }
+}

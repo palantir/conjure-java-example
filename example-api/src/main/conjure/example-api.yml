@@ -1,26 +1,32 @@
 types:
   definitions:
-    default-package: com.palantir.conjure.examples
+    default-package: com.palantir.conjure.recipes.api
     objects:
       Temperature:
         fields:
           degree: double
           unit: string
+
       Ingredient:
         alias: string
+
       RecipeName:
         alias: string
+
       BakeStep:
         fields:
           temperature: Temperature
           durationInSeconds: integer
+
       RecipeStep:
         union:
           mix: set<Ingredient>
           chop: Ingredient
           bake: BakeStep
+
       Recipe:
         fields:
+          recipeId: uuid
           name: RecipeName
           steps: list<RecipeStep>
 
@@ -34,25 +40,35 @@ types:
 services:
   RecipeBookService:
     name: Recipe Book
-    package: com.palantir.comnjure.examples.api
+    package: com.palantir.conjure.recipes.api
     base-path: /
     docs: |
       APIs for retrieving recipes
 
     endpoints:
+      createRecipe:
+        http: POST /recipes
+        args:
+          createRecipeRequest:
+            param-type: body
+            type: Recipe
+
       getRecipe:
         http: GET /recipes/{name}
         args:
-         name:
-          type: RecipeName
+          name: RecipeName
         returns: Recipe
         docs: |
           Retrieves a recipe for the given name.
 
           @param name
                  The name of the recipe
-      getRecipes:
+
+      getAllRecipes:
         http: GET /recipes
         returns: list<Recipe>
-        docs: |
-          Returns a list of avaiable recipes in the book.
+
+      deleteRecipe:
+        http: DELETE /recipes/{name}
+        args:
+          name: RecipeName
