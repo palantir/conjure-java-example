@@ -17,25 +17,34 @@
 package com.palantir.conjure.examples;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.collect.ImmutableSet;
 import com.palantir.conjure.examples.recipes.api.Recipe;
+import com.palantir.websecurity.WebSecurityConfigurable;
+import com.palantir.websecurity.WebSecurityConfiguration;
 import io.dropwizard.Configuration;
-import java.util.List;
 import java.util.Set;
+import javax.validation.Valid;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public final class RecipeBookConfiguration extends Configuration {
+public final class RecipeBookConfiguration extends Configuration implements WebSecurityConfigurable {
 
     @NotEmpty
+    @JsonProperty("recipes")
     private Set<Recipe> recipes;
 
-    @JsonProperty
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
+    @JsonProperty("webSecurity")
+    @Valid
+    private final WebSecurityConfiguration webSecurity = WebSecurityConfiguration.DEFAULT;
+
     public Set<Recipe> getRecipes() {
         return recipes;
     }
 
-    @JsonProperty
-    public void setRecipes(List<Recipe> recipes) {
-        this.recipes = ImmutableSet.copyOf(recipes);
+    @Override
+    public WebSecurityConfiguration getWebSecurityConfiguration() {
+        return webSecurity;
     }
 }

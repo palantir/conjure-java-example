@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.palantir.conjure.examples.resources.RecipeBookResource;
 import com.palantir.remoting3.ext.jackson.ObjectMappers;
 import com.palantir.remoting3.servers.jersey.HttpRemotingJerseyFeature;
+import com.palantir.websecurity.WebSecurityBundle;
 import io.dropwizard.Application;
 import io.dropwizard.jackson.DiscoverableSubtypeResolver;
 import io.dropwizard.jackson.FuzzyEnumModule;
@@ -39,12 +40,14 @@ public final class RecipeBookApplication extends Application<RecipeBookConfigura
                 .setSubtypeResolver(new DiscoverableSubtypeResolver())
                 .registerModule(new FuzzyEnumModule());
         bootstrap.setObjectMapper(remotingObjectMapper);
+        bootstrap.addBundle(new WebSecurityBundle());
     }
 
     @Override
     public void run(RecipeBookConfiguration configuration, Environment environment) {
         RecipeBookResource resource = new RecipeBookResource(configuration.getRecipes());
         environment.jersey().register(resource);
+
 
         // must register HttpRemotingJerseyFeature to map conjure error types.
         environment.jersey().register(HttpRemotingJerseyFeature.INSTANCE);

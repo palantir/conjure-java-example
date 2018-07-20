@@ -2,7 +2,7 @@ server:
   applicationContextPath: /examples
   applicationConnectors:
     - type: http
-      port: 8000
+      port: 8345
   rootPath: /api/*
 recipes:
   - name: "roasted broccoli with garlic"
