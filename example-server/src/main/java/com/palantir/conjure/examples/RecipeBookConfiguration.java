@@ -17,23 +17,25 @@
 package com.palantir.conjure.examples;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.palantir.conjure.examples.recipes.api.Recipe;
 import io.dropwizard.Configuration;
 import java.util.List;
+import java.util.Set;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public final class RecipeBookConfiguration extends Configuration {
 
     @NotEmpty
-    private List<Recipe> recipes;
+    private Set<Recipe> recipes;
 
     @JsonProperty
-    public List<Recipe> getRecipes() {
+    public Set<Recipe> getRecipes() {
         return recipes;
     }
 
     @JsonProperty
     public void setRecipes(List<Recipe> recipes) {
-        this.recipes = ImmutableList.copyOf(recipes);
+        this.recipes = ImmutableSet.copyOf(recipes);
     }
 }

@@ -20,7 +20,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertEquals;
 
 import com.google.common.io.Resources;
-import com.palantir.comnjure.examples.api.RecipeBookService;
+import com.palantir.conjure.examples.recipes.api.Recipe;
+import com.palantir.conjure.examples.recipes.api.RecipeBookService;
+import com.palantir.conjure.examples.recipes.api.RecipeName;
 import feign.Client;
 import feign.Feign;
 import feign.FeignException;
@@ -28,7 +30,7 @@ import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import feign.jaxrs.JAXRSContract;
 import io.dropwizard.testing.junit.DropwizardAppRule;
-import java.util.List;
+import java.util.Set;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -63,11 +65,11 @@ public class RecipeBookApplicationTest {
     public void getRecipe() {
         RecipeName recipeName = RecipeName.of("roasted broccoli with garlic");
         Recipe recipe = client.getRecipe(recipeName);
-        Recipe expectedRecipe = RULE.getConfiguration().getRecipes().stream().filter(
-                r -> r.getName().equals(recipeName)).findFirst().get();
+        Recipe expectedRecipe = RULE.getConfiguration().getRecipes().stream()
+                .filter(r -> r.getName().equals(recipeName)).findFirst().get();
         assertEquals(expectedRecipe, recipe);
 
-        List<Recipe> recipes = client.getRecipes();
+        Set<Recipe> recipes = client.getAllRecipes();
         assertEquals(RULE.getConfiguration().getRecipes(), recipes);
     }
 }
