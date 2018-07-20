@@ -17,12 +17,10 @@
 package com.palantir.conjure.examples;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.collect.ImmutableSet;
 import com.palantir.conjure.examples.recipes.api.Recipe;
 import com.palantir.websecurity.WebSecurityConfigurable;
 import com.palantir.websecurity.WebSecurityConfiguration;
 import io.dropwizard.Configuration;
-import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
 import org.hibernate.validator.constraints.NotEmpty;
