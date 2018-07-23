@@ -6,13 +6,9 @@ server:
   rootPath: /api/*
 webSecurity:
   cors:
-#    allowCredentials: false
     allowedHeaders: "*"
     allowedMethods: "DELETE,GET,HEAD,POST,PUT"
-    allowedOrigins: "*"
-#    chainPreflight: true
-#    exposedHeaders: ""
-#    preflightMaxAge: 1800
+    allowedOrigins: "localhost"
 recipes:
   - name: "roasted broccoli with garlic"
     steps:
