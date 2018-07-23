@@ -4,12 +4,12 @@ server:
     - type: http
       port: 8000
   rootPath: /api/*
-#webSecurity:
-#  cors:
+webSecurity:
+  cors:
 #    allowCredentials: false
 #    allowedHeaders: "Accept,Authorization,Content-Type,Origin,X-Requested-With"
-#    allowedMethods: "DELETE,GET,HEAD,POST,PUT"
-#    allowedOrigins: ""
+    allowedMethods: "DELETE,GET,HEAD,POST,PUT"
+    allowedOrigins: "*"
 #    chainPreflight: true
 #    exposedHeaders: ""
 #    preflightMaxAge: 1800
