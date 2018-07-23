@@ -7,7 +7,7 @@ server:
 webSecurity:
   cors:
 #    allowCredentials: false
-#    allowedHeaders: "Accept,Authorization,Content-Type,Origin,X-Requested-With"
+    allowedHeaders: "*"
     allowedMethods: "DELETE,GET,HEAD,POST,PUT"
     allowedOrigins: "*"
 #    chainPreflight: true
