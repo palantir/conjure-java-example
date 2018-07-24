@@ -1,6 +1,6 @@
 types:
   definitions:
-    default-package: com.palantir.conjure.examples.recipes.api
+    default-package: com.palantir.conjure.examples.recipe.api
     objects:
       Temperature:
         fields:
@@ -39,21 +39,21 @@ types:
 services:
   RecipeBookService:
     name: Recipe Book
-    package: com.palantir.conjure.examples.recipes.api
-    base-path: /
+    package: com.palantir.conjure.examples.recipe.api
+    base-path: /recipes
     docs: |
       APIs for retrieving recipes
 
     endpoints:
       createRecipe:
-        http: POST /recipes
+        http: POST /
         args:
           createRecipeRequest:
             param-type: body
             type: Recipe
 
       getRecipe:
-        http: GET /recipes/{name}
+        http: GET /{name}
         args:
           name: RecipeName
         returns: Recipe
@@ -64,10 +64,10 @@ services:
                  The name of the recipe
 
       getAllRecipes:
-        http: GET /recipes
+        http: GET /
         returns: set<Recipe>
 
       deleteRecipe:
-        http: DELETE /recipes/{name}
+        http: DELETE /{name}
         args:
           name: RecipeName

@@ -16,7 +16,7 @@
 
 apply plugin: 'com.palantir.conjure'
 
-configure(subprojects - project('example-api-typescript')) {
+configure(subprojects - project('recipe-example-api-typescript')) {
     dependencies {
         compile 'com.palantir.conjure.java:conjure-lib'
         compile 'com.fasterxml.jackson.core:jackson-databind'
@@ -24,7 +24,7 @@ configure(subprojects - project('example-api-typescript')) {
     tasks.compileJava.dependsOn compileConjure
 }
 
-project (':example-api:example-api-typescript') {
+project (':recipe-example-api:recipe-example-api-typescript') {
     publishTypeScript.doFirst {
         file('src/.npmrc') << "//registry.npmjs.org/:_authToken=${System.env.NPM_AUTH_TOKEN}"
     }
@@ -33,6 +33,6 @@ project (':example-api:example-api-typescript') {
 // optional, only needed if you want to override the default settings
 conjure {
     typescript {
-        packageName = "conjure-examples-api" // default package name is the project name, `example-api`
+        packageName = "conjure-recipe-example-api" // default package name is the project name, `recipe-example-api`
     }
 }

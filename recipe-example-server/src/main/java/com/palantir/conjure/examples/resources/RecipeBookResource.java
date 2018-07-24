@@ -17,10 +17,10 @@
 package com.palantir.conjure.examples.resources;
 
 import com.google.common.base.Preconditions;
-import com.palantir.conjure.examples.recipes.api.Recipe;
-import com.palantir.conjure.examples.recipes.api.RecipeBookService;
-import com.palantir.conjure.examples.recipes.api.RecipeErrors;
-import com.palantir.conjure.examples.recipes.api.RecipeName;
+import com.palantir.conjure.examples.recipe.api.Recipe;
+import com.palantir.conjure.examples.recipe.api.RecipeBookService;
+import com.palantir.conjure.examples.recipe.api.RecipeErrors;
+import com.palantir.conjure.examples.recipe.api.RecipeName;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
