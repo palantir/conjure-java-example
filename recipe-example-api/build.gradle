@@ -21,7 +21,6 @@ configure(subprojects - project('recipe-example-api-typescript')) {
         compile 'com.palantir.conjure.java:conjure-lib'
         compile 'com.fasterxml.jackson.core:jackson-databind'
     }
-    tasks.compileJava.dependsOn compileConjure
 }
 
 project (':recipe-example-api:recipe-example-api-typescript') {
