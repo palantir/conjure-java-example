@@ -107,7 +107,7 @@ To generate bindings for a new language. Note that currently `gradle-conjure` pl
     ```
 2. Optional: use the gradle script `configure` closure in `recipe-example-api/build.gradle` to configure project specific settings for the new sub project.
 3. Specify conjure python dependency versions in versions.props
-   ``diff
+   ```diff
    + com.palantir.conjure.python:* = 3.4.0
    ```
 4. run `./gradlew compileConjurePython` to generate new bindings for python.
