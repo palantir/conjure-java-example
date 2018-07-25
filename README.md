@@ -10,7 +10,7 @@ This example project uses the following tools and libraries, please consult thei
 * [conjure](https://github.com/palantir/conjure) - IDL for defining APIs once and generating client/server interfaces in different languages.
     * [conjure-java-runtime](https://github.com/palantir/http-remoting/) - conjure libraries for HTTP&JSON-based RPC using Retrofit, Feign, OkHttp as clients and Jetty/Jersey as servers
     * [conjure-java](https://github.com/palantir/conjure-java) - conjure generator for java clients and servers 
-    * [conjure-typescript](https://github.com/palantir/conjure-java) - conjure generator for typescript clients
+    * [conjure-typescript](https://github.com/palantir/conjure-typescript) - conjure generator for typescript clients
 * [gradle](https://gradle.org/) - a highly flexible build tool. Some of the gradle plugins applied are:
      *  [gradle-conjure](https://github.com/palantir/gradle-conjure) - a gradle plugin that contains tasks to generate conjure bindings.
      *  [gradle-baseline](https://github.com/palantir/gradle-baseline) - a gradle plugin for configuring code quality tools in builds and projects.
@@ -35,11 +35,11 @@ This example project uses the following tools and libraries, please consult thei
     * build.gradle - a gradle script that 
         1. configures sub-projects with needed dependencies to generate java bindings. e.g. `recipe-example-api-jersey`
         2. configures `publishTypescript` task to generate `.npmrc` in the generated root folder, `recipe-example-api-typescript/src` for publishing the generated npm module.
-        3. and modifies the `conjure` extension to specify the package name under which the npm module will be published.
+        3. modifies the `conjure` extension to specify the package name under which the npm module will be published.
     * recipe-example-api-jersey - the sub-project where all generated [service interfaces](https://github.com/palantir/conjure-java-example/blob/0.1.1/example-api/src/main/conjure/example-api.yml#L39) live.
     * recipe-example-api-objects - the sub-project where all generated [object classes](https://github.com/palantir/conjure-java-example/blob/0.1.1/example-api/src/main/conjure/example-api.yml#L4) live.
     * recipe-example-api-typescript - the sub-project where all generated typescript bindings live.
-    * src/main/conjure - the conjure definition yml file where recipe APIs are defined, please refer to [specification.md](https://github.com/palantir/conjure/blob/develop/docs/specification.md) for more details.
+    * src/main/conjure - directory containing conjure definition yml files where recipe APIs are defined, please refer to [specification.md](https://github.com/palantir/conjure/blob/develop/docs/specification.md) for more details.
 
 * `recipe-example-server` - a dropwizard application project that uses conjure generated jersey binding for resource class implementation
 
@@ -71,14 +71,14 @@ This example project uses the following tools and libraries, please consult thei
     │       └── conf
     │           └── recipes.yml
     ```
-    * build.gradle - configures the project with needed dependencies and applies the gradle plugin, so we can run the server locally or in IDE.
+    * build.gradle - configures the project with needed dependencies and applies the `gradle-conjure` and `application plugins`, so we can run the server locally or in IDE.
     * src/main/java - source classes for the dropwizard application. e.g. RecipeBookResource.java class `implements` the generated Jersey interface.
     * test/main/java - test source classes for simple integration tests that uses generated jersey interface for client interaction.
     * var/conf/recipes.yml - the dropwizard application configuration yml file
 
 * build.gradle - the root level gradle script where a set of gradle plugins are configured, including [gradle-conjure](https://github.com/palantir/gradle-conjure).
 * settings.gradle - the gradle settings file where all sub projects are configured.
-* versions.props - a property file of the [version recommender plugin](https://github.com/nebula-plugins/nebula-dependency-recommender-plugin) with which we can specify versions of project dependencies, including conjure generators.
+* versions.props - a property file of the [nebula version recommender plugin](https://github.com/nebula-plugins/nebula-dependency-recommender-plugin) with which we can specify versions of project dependencies, including conjure generators.
 
 ## Development
 
@@ -110,7 +110,7 @@ To generate bindings for a new language. Note that currently `gradle-conjure` pl
    ```diff
    + com.palantir.conjure.python:* = 3.4.0
    ```
-4. run `./gradlew compileConjurePython` to generate new bindings for python.
+4. run `./gradlew compileConjure` to generate new bindings for python.
 
 ##### Generate Java retrofit interfaces
 Similar to how we add the conjure generation for python above, we can add a new project to generate java retrofit interfaces
