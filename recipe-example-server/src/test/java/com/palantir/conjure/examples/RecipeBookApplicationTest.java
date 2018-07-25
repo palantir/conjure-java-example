@@ -20,9 +20,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertEquals;
 
 import com.google.common.io.Resources;
-import com.palantir.conjure.examples.recipes.api.Recipe;
-import com.palantir.conjure.examples.recipes.api.RecipeBookService;
-import com.palantir.conjure.examples.recipes.api.RecipeName;
+import com.palantir.conjure.examples.recipe.api.Recipe;
+import com.palantir.conjure.examples.recipe.api.RecipeBookService;
+import com.palantir.conjure.examples.recipe.api.RecipeName;
 import feign.Client;
 import feign.Feign;
 import feign.FeignException;

@@ -3,8 +3,8 @@ apply plugin: 'application'
 dependencies {
     processor 'org.immutables:value'
 
-    compile project(':example-api:example-api-objects')
-    compile project(':example-api:example-api-jersey')
+    compile project(':recipe-example-api:recipe-example-api-objects')
+    compile project(':recipe-example-api:recipe-example-api-jersey')
 
     compile 'com.google.guava:guava'
     compile 'com.palantir.remoting3:jackson-support'

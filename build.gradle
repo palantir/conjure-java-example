@@ -52,7 +52,7 @@ allprojects {
     }
 }
 
-configure(subprojects - project(':example-api')) {
+configure(subprojects - project(':recipe-example-api')) {
     apply plugin: 'java'
     apply plugin: 'com.palantir.baseline-checkstyle'
     apply plugin: 'com.palantir.baseline-eclipse'
