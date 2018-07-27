@@ -8,7 +8,7 @@ webSecurity:
   cors:
     allowedHeaders: "*"
     allowedMethods: "DELETE,GET,HEAD,POST,PUT"
-    allowedOrigins: "localhost"
+    allowedOrigins: "*"
 recipes:
   - name: "roasted broccoli with garlic"
     steps:
