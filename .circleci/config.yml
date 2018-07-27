@@ -52,7 +52,7 @@ jobs:
     - restore_cache:
         key: gradle-cache-v2-{{ checksum "versions.props" }}-{{ checksum "build.gradle" }}
     - run: ./gradlew distTar
-    - run: ./scripts/docker_build.sh
+    - run: ./scripts/build_docker.sh
     - run: docker run palantir/recipe-example-server:$(git describe --tags --always --first-parent) --help
     - deploy:
         command: |

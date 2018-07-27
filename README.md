@@ -1,9 +1,9 @@
-# conjure-java-example
+s# conjure-java-example
 A small recipe application that demonstrates the simple usage of conjure tooling.
 
 ## Overview
 
-#### Tools and Libraries
+### Tools and Libraries
 
 This example project uses the following tools and libraries, please consult their respective documentation for more information.
 
@@ -16,7 +16,7 @@ This example project uses the following tools and libraries, please consult thei
      *  [gradle-baseline](https://github.com/palantir/gradle-baseline) - a gradle plugin for configuring code quality tools in builds and projects.
 * [dropwizard](https://www.dropwizard.io/1.3.5/docs/) - a simple framework for building web services
 
-#### Project Structure
+### Project Structure
 
 * `recipe-example-api` - a sub-project that defines recipe-example APIs in Conjure and generates both java and typescript bindings.
 
@@ -65,22 +65,22 @@ This example project uses the following tools and libraries, please consult thei
 
 ## Development
 
-#### Useful Gradle Commands:
+### Useful Gradle Commands:
 
 * `./gradlew tasks` for tasks available in this project.
 * `./gradlew idea` for IntelliJ
 * `./gradlew eclipse` for Eclipse
 * `./gradlew run` for running the server or use IDE to debug it
 
-#### Generate New or Modify Existing APIs
+### Generate New or Modify Existing APIs
 
-##### Modify existing APIs
+#### Modify existing APIs
 To modify the existing bindings in this project:
 1. Make changes to the `recipe-example-api/src/main/conjure/recipe-api.yml` file
 2. Run `./gradlew compileConjure` or a more specific task such as `./gradlew compileConjureObjects`, to check if the changes compile
 3. Or run `./gradlew idea` or `./gradlew eclipse` to update the bindings for your IDE
 
-##### Generate new binding for a different language
+#### Generate new binding for a different language
 To generate bindings for a new language. Note that currently `gradle-conjure` plugin only supports generation of java, typescript, and python bindings.
 1. Add a new sub project under `recipe-example-api` by modifying the `settings.gradle` file. 
     ```diff
@@ -95,7 +95,7 @@ To generate bindings for a new language. Note that currently `gradle-conjure` pl
    ```
 4. run `./gradlew compileConjure` to generate new bindings for python.
 
-##### Generate Java retrofit interfaces
+#### Generate Java retrofit interfaces
 Similar to how we add the conjure generation for python above, we can add a new project to generate java retrofit interfaces
 1. add a new sub project under `recipe-example-api` by modifying the `settings.gradle` file. 
     ```diff
@@ -105,3 +105,24 @@ Similar to how we add the conjure generation for python above, we can add a new 
     ```
 2. Optional: use the gradle script `configure` closure in `recipe-example-api/build.gradle` to configure project specific settings for the new sub project. 
 3. run `./gradlew compileConjureRetrofit` to generate new bindings for python.
+
+### Developing Application Clients
+#### Java client
+The tests in `recipe-example-server/src/test/java` illustrates a simple example of how you would use a vanilla feign client to interact with the application. E.g.
+
+    ```
+        Feign client = Feign.builder()
+                .contract(new JAXRSContract())
+                .client(new Client.Default(null, null))
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .target(RecipeBookService.class,
+                        String.format("http://localhost:%d/examples/api/", RULE.getLocalPort()));
+
+        Recipe recipe = client.getRecipe(recipeName);
+    ```
+#### Typescript client
+Please see (conjure-typescript-example)[https://github.com/palantir/conjure-typescript-example] for details.
+
+#### TODO add conjure-java runtime example
+#### TODO add tracing example
