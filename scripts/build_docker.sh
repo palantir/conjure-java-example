@@ -13,6 +13,6 @@ tar -xf "./recipe-example-server/build/distributions/recipe-example-server-${VER
 cp ./recipe-example-server/var/conf/recipes.yml $DEST/recipe-example-server/var/conf
 
 cd $DEST
-docker build -t "palantir/recipe-example-server:$VERSION" .
-docker tag "palantir/recipe-example-server:$VERSION" "palantir/recipe-example-server:latest"
+docker build -t "palantirtechnologies/recipe-example-server:$VERSION" .
+docker tag "palantirtechnologies/recipe-example-server:$VERSION" "palantirtechnologies/recipe-example-server:latest"
 

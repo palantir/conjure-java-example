@@ -53,13 +53,13 @@ jobs:
         key: gradle-cache-v2-{{ checksum "versions.props" }}-{{ checksum "build.gradle" }}
     - run: ./gradlew distTar
     - run: ./scripts/build_docker.sh
-    - run: docker run palantir/recipe-example-server:$(git describe --tags --always --first-parent) --help
+    - run: docker run palantirtechnologies/recipe-example-server:$(git describe --tags --always --first-parent) --help
     - deploy:
         command: |
           if [[ "${CIRCLE_BRANCH}" == "develop" || "${CIRCLE_TAG}" =~ [0-9]+(\.[0-9]+)+(-[a-zA-Z]+[0-9]*)* ]]; then
             docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-            docker push palantir/recipe-example-server:$(git describe --tags --always --first-parent)
-            docker push palantir/recipe-example-server:latest
+            docker push palantirtechnologies/recipe-example-server:$(git describe --tags --always --first-parent)
+            docker push palantirtechnologies/recipe-example-server:latest
           fi
 
 workflows:
