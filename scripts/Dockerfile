@@ -1,7 +1,6 @@
 FROM java:8u111-jdk-alpine
 
 RUN set -eux; \
-    rm -fr /var/cache/apk/*; \
     mkdir -p /opt/palantir/services;
 
 ADD recipe-example-server/ /opt/palantir/services/recipe-example-server
