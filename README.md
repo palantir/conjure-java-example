@@ -48,25 +48,8 @@ This example project uses the following tools and libraries, please consult thei
     ├── recipe-example-server
     │   ├── build.gradle
     │   ├── src
-    │   │   ├── main
-    │   │   │   └── java
-    │   │   │       └── com
-    │   │   │           └── palantir
-    │   │   │               └── conjure
-    │   │   │                   └── examples
-    │   │   │                       ├── RecipeBookApplication.java
-    │   │   │                       ├── RecipeBookConfiguration.java
-    │   │   │                       └── resources
-    │   │   │                           └── RecipeBookResource.java
-    │   │   └── test
-    │   │       ├── java
-    │   │       │   └── com
-    │   │       │       └── palantir
-    │   │       │           └── conjure
-    │   │       │               └── examples
-    │   │       │                   └── RecipeBookApplicationTest.java
-    │   │       └── resources
-    │   │           └── test.yml
+    │   │   ├── main/java
+    │   │   └── test/java
     │   └── var
     │       └── conf
     │           └── recipes.yml
