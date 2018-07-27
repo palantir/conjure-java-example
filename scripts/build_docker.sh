@@ -14,5 +14,5 @@ cp ./recipe-example-server/var/conf/recipes.yml $DEST/recipe-example-server/var/
 
 cd $DEST
 docker build -t "palantirtechnologies/recipe-example-server:$VERSION" .
-docker tag "palantirtechnologies/recipe-example-server:$VERSION" "palantir/recipe-example-server:latest"
+docker tag "palantirtechnologies/recipe-example-server:$VERSION" "palantir/recipe-example-server/recipe-example-server:latest"
 
