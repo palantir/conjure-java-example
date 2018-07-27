@@ -106,7 +106,9 @@ Similar to how we add the conjure generation for python above, we can add a new 
 2. Optional: use the gradle script `configure` closure in `recipe-example-api/build.gradle` to configure project specific settings for the new sub project. 
 3. run `./gradlew compileConjureRetrofit` to generate new bindings for python.
 
-### Developing Application Clients
+### Writing Clients
+Please see the following sub sections for examples of writing recipe clients in different languages. To dev against this  recipe application, you can either run server locally via `./gradlew run` or use spin up a docker container using the `palantir/recipe-example-server:latest` image.
+
 #### Java client
 The tests in `recipe-example-server/src/test/java` illustrates a simple example of how you would use a vanilla feign client to interact with the application. E.g.
 
@@ -122,7 +124,7 @@ The tests in `recipe-example-server/src/test/java` illustrates a simple example 
         Recipe recipe = client.getRecipe(recipeName);
     ```
 #### Typescript client
-Please see (conjure-typescript-example)[https://github.com/palantir/conjure-typescript-example] for details.
+Please see [conjure-typescript-example](https://github.com/palantir/conjure-typescript-example) for details.
 
 #### TODO add conjure-java runtime example
 #### TODO add tracing example

@@ -6,11 +6,12 @@ VERSION=$(git describe --tags --always --first-parent)
 DEST=build/docker
 
 rm -rf $DEST
-mkdir -p $DEST
+mkdir -p $DEST/recipe-example-server/var/conf
 
 cp ./scripts/Dockerfile $DEST/
-cp "./recipe-example-server/build/distributions/recipe-example-server-${VERSION}.tar" $DEST/
-cp ./recipe-example-server/var/conf/recipes.yml $DEST/
+tar -xf "./recipe-example-server/build/distributions/recipe-example-server-${VERSION}.tar" -C $DEST/recipe-example-server --strip-components=1
+mdkir 
+cp ./recipe-example-server/var/conf/recipes.yml $DEST/recipe-example-server/var/conf
 
 cd $DEST
 docker build -t "palantir/recipe-example-server:$VERSION" .
