@@ -41,6 +41,26 @@ jobs:
 
       - store_artifacts:
           path: ~/poms
+  publish-docker:
+    docker:
+    - image: circleci/openjdk:8u171-jdk
+    steps:
+    - setup_remote_docker
+    - checkout
+    - restore_cache:
+        key: gradle-wrapper-v2-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+    - restore_cache:
+        key: gradle-cache-v2-{{ checksum "versions.props" }}-{{ checksum "build.gradle" }}
+    - run: ./gradlew distTar
+    - run: ./scripts/docker_build.sh
+    - run: docker run palantir/recipe-example-server:$(git describe --tags --always --first-parent) --help
+    - deploy:
+        command: |
+          if [[ "${CIRCLE_BRANCH}" == "develop" || "${CIRCLE_TAG}" =~ [0-9]+(\.[0-9]+)+(-[a-zA-Z]+[0-9]*)* ]]; then
+            docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+            docker push palantir/recipe-example-server:$(git describe --tags --always --first-parent)
+            docker push palantir/recipe-example-server:latest
+          fi
 
 workflows:
   version: 2
@@ -50,3 +70,7 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - publish-docker:
+          requires:
+            - build
+          filters: { tags: { only: /.*/ } }
