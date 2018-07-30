@@ -15,7 +15,7 @@ recipes:
         bake:
           temperature:
             degree: 230
-            unit: "C"
+            unit: "CELCIUS"
           durationInSeconds: 1200
   - name: "baked potatoes"
     steps:
@@ -25,5 +25,5 @@ recipes:
         bake:
           temperature:
             degree: 220
-            unit: "C"
+            unit: "CELCIUS"
           durationInSeconds: 2700
