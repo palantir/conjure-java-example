@@ -5,7 +5,7 @@ types:
       Temperature:
         fields:
           degree: double
-          unit: TemperatureUnits
+          unit: TemperatureUnit
 
       Ingredient:
         alias: string
@@ -29,7 +29,7 @@ types:
           name: RecipeName
           steps: list<RecipeStep>
 
-      TemperatureUnits:
+      TemperatureUnit:
         values:
           - FAHRENHEIT
           - CELCIUS
