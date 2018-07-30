@@ -19,10 +19,17 @@ package com.palantir.conjure.examples;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertEquals;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.io.Resources;
+import com.palantir.conjure.examples.recipe.api.BakeStep;
+import com.palantir.conjure.examples.recipe.api.Ingredient;
 import com.palantir.conjure.examples.recipe.api.Recipe;
 import com.palantir.conjure.examples.recipe.api.RecipeBookService;
 import com.palantir.conjure.examples.recipe.api.RecipeName;
+import com.palantir.conjure.examples.recipe.api.RecipeStep;
+import com.palantir.conjure.examples.recipe.api.Temperature;
+import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
 import feign.Client;
 import feign.Feign;
 import feign.FeignException;
@@ -71,5 +78,23 @@ public class RecipeBookApplicationTest {
 
         Set<Recipe> recipes = client.getAllRecipes();
         assertEquals(RULE.getConfiguration().getRecipes(), recipes);
+    }
+
+    @Test
+    public void getRecipeWithBake() {
+        RecipeName recipeName = RecipeName.of("baked potatoes");
+        Recipe recipe = client.getRecipe(recipeName);
+        Recipe expectedRecipe = Recipe.of(recipeName, ImmutableList.of(
+                RecipeStep.mix(ImmutableSet.of(
+                        Ingredient.of("rub oil all over the potatoes"),
+                        Ingredient.of("Rub salt all over the potatoes"))),
+                RecipeStep.bake(BakeStep.builder()
+                        .temperature(Temperature.builder()
+                                .degree(220)
+                                .unit(TemperatureUnit.CELCIUS)
+                                .build())
+                        .durationInSeconds(2700)
+                        .build())));
+        assertEquals(expectedRecipe, recipe);
     }
 }

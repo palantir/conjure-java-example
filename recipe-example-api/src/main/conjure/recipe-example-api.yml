@@ -5,7 +5,7 @@ types:
       Temperature:
         fields:
           degree: double
-          unit: string
+          unit: TemperatureUnit
 
       Ingredient:
         alias: string
@@ -28,6 +28,11 @@ types:
         fields:
           name: RecipeName
           steps: list<RecipeStep>
+
+      TemperatureUnit:
+        values:
+          - FAHRENHEIT
+          - CELCIUS
 
     errors:
       RecipeNotFound:
