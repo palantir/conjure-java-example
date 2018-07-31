@@ -20,18 +20,6 @@ recipes:
         bake:
           temperature:
             degree: 230
-            unit: "FAHRENHEIT"
-          durationInSeconds: 1200
-  - name: "roasted broccoli with garlic"
-    steps:
-      - type: chop
-        chop: "3 cloves of garlic"
-      - type: mix
-        mix: ["2 tbsp extra olive oil", "chopped garlic"]
-      - type: bake
-        bake:
-          temperature:
-            degree: 230
             unit: "CELCIUS"
           durationInSeconds: 1200
   - name: "baked potatoes"
