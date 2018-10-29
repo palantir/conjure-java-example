@@ -1,4 +1,4 @@
-com.google.guava:guava = 21.0
+com.google.guava:guava = 23.6.1-jre
 com.netflix.feign:feign-*= 8.18.0
 com.palantir.conjure.java:* = 1.0.0
 com.palantir.conjure.typescript:* = 3.0.0
