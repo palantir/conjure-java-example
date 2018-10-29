@@ -5,3 +5,5 @@ include 'recipe-example-api'
 include 'recipe-example-api:recipe-example-api-objects'
 include 'recipe-example-api:recipe-example-api-jersey'
 include 'recipe-example-api:recipe-example-api-typescript'
+
+enableFeaturePreview('STABLE_PUBLISHING')

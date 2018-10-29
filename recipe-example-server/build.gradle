@@ -7,8 +7,8 @@ dependencies {
     compile project(':recipe-example-api:recipe-example-api-jersey')
 
     compile 'com.google.guava:guava'
-    compile 'com.palantir.remoting3:jackson-support'
-    compile 'com.palantir.remoting3:jersey-servers'
+    compile 'com.palantir.conjure.java.runtime:conjure-java-jackson-serialization'
+    compile 'com.palantir.conjure.java.runtime:conjure-java-jersey-server'
     compile 'com.palantir.websecurity:dropwizard-web-security'
     compile 'io.dropwizard:dropwizard-core'
     compile 'org.slf4j:slf4j-api'

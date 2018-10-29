@@ -18,8 +18,8 @@ package com.palantir.conjure.examples;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.palantir.conjure.examples.resources.RecipeBookResource;
-import com.palantir.remoting3.ext.jackson.ObjectMappers;
-import com.palantir.remoting3.servers.jersey.HttpRemotingJerseyFeature;
+import com.palantir.conjure.java.serialization.ObjectMappers;
+import com.palantir.conjure.java.server.jersey.ConjureJerseyFeature;
 import com.palantir.websecurity.WebSecurityBundle;
 import io.dropwizard.Application;
 import io.dropwizard.jackson.DiscoverableSubtypeResolver;
@@ -50,6 +50,6 @@ public final class RecipeBookApplication extends Application<RecipeBookConfigura
 
 
         // must register HttpRemotingJerseyFeature to map conjure error types.
-        environment.jersey().register(HttpRemotingJerseyFeature.INSTANCE);
+        environment.jersey().register(ConjureJerseyFeature.INSTANCE);
     }
 }
