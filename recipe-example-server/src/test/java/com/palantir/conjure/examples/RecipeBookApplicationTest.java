@@ -16,7 +16,6 @@
 
 package com.palantir.conjure.examples;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertEquals;
 
 import com.google.common.collect.ImmutableList;
@@ -26,23 +25,28 @@ import com.palantir.conjure.examples.recipe.api.BakeStep;
 import com.palantir.conjure.examples.recipe.api.Ingredient;
 import com.palantir.conjure.examples.recipe.api.Recipe;
 import com.palantir.conjure.examples.recipe.api.RecipeBookService;
+import com.palantir.conjure.examples.recipe.api.RecipeErrors;
 import com.palantir.conjure.examples.recipe.api.RecipeName;
 import com.palantir.conjure.examples.recipe.api.RecipeStep;
 import com.palantir.conjure.examples.recipe.api.Temperature;
 import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
-import feign.Client;
-import feign.Feign;
-import feign.FeignException;
-import feign.jackson.JacksonDecoder;
-import feign.jackson.JacksonEncoder;
-import feign.jaxrs.JAXRSContract;
+import com.palantir.conjure.java.api.config.service.ServiceConfiguration;
+import com.palantir.conjure.java.api.config.service.UserAgent;
+import com.palantir.conjure.java.api.config.service.UserAgent.Agent;
+import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
+import com.palantir.conjure.java.api.testing.Assertions;
+import com.palantir.conjure.java.client.config.ClientConfigurations;
+import com.palantir.conjure.java.client.jaxrs.JaxRsClient;
+import com.palantir.conjure.java.okhttp.NoOpHostEventsSink;
 import io.dropwizard.testing.junit.DropwizardAppRule;
+import java.nio.file.Paths;
 import java.util.Set;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 
 public class RecipeBookApplicationTest {
+    private static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
 
     @ClassRule
     public static final DropwizardAppRule<RecipeBookConfiguration> RULE =
@@ -52,20 +56,21 @@ public class RecipeBookApplicationTest {
 
     @BeforeClass
     public static void before() {
-        client = Feign.builder()
-                .contract(new JAXRSContract())
-                .client(new Client.Default(null, null))
-                .encoder(new JacksonEncoder())
-                .decoder(new JacksonDecoder())
-                .target(RecipeBookService.class,
-                        String.format("http://localhost:%d/examples/api/", RULE.getLocalPort()));
+        client = JaxRsClient.create(
+                RecipeBookService.class,
+                UserAgent.of(Agent.of("test", "0.0.0")),
+                NoOpHostEventsSink.INSTANCE,
+                ClientConfigurations.of(ServiceConfiguration
+                        .builder()
+                        .addUris(String.format("http://localhost:%d/examples/api/", RULE.getLocalPort()))
+                        .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
+                        .build()));
     }
 
     @Test
     public void getRecipeUsingInvalidName() {
-        assertThatThrownBy(() -> client.getRecipe(RecipeName.of("doesNotExist")))
-                .isInstanceOf(FeignException.class)
-                .hasMessageContaining("\"errorCode\":\"NOT_FOUND\",\"errorName\":\"Recipe:RecipeNotFound\"");
+        Assertions.assertThatRemoteExceptionThrownBy(() -> client.getRecipe(RecipeName.of("doesNotExist")))
+                .isGeneratedFromErrorType(RecipeErrors.RECIPE_NOT_FOUND);
     }
 
     @Test
