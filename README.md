@@ -111,19 +111,22 @@ Similar to how we add the conjure generation for python above, we can add a new 
 Please see the following subsections for examples of writing recipe clients in different languages. To dev against this  recipe application, you can either run the server locally via `./gradlew run` or spin up a docker container using the `palantir/recipe-example-server:latest` image.
 
 #### Java client
-The tests in `recipe-example-server/src/test/java` illustrate  simple examples of how you would use a vanilla feign client to interact with the application. E.g.
+The tests in `recipe-example-server/src/test/java` illustrate simple examples of how you would use a Conjure jaxrs client to interact with the application. E.g.
 
-    ```
-        Feign client = Feign.builder()
-                .contract(new JAXRSContract())
-                .client(new Client.Default(null, null))
-                .encoder(new JacksonEncoder())
-                .decoder(new JacksonDecoder())
-                .target(RecipeBookService.class,
-                        String.format("http://localhost:%d/examples/api/", RULE.getLocalPort()));
+```java
+RecipeBookService recipeBook = JaxRsClient.create(
+       RecipeBookService.class,
+       UserAgent.of(Agent.of("test", "0.0.0")),
+       NoOpHostEventsSink.INSTANCE,
+       ClientConfigurations.of(ServiceConfiguration
+               .builder()
+               .addUris(String.format("http://localhost:%d/examples/api/", RULE.getLocalPort()))
+               .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
+               .build()));
 
-        Recipe recipe = client.getRecipe(recipeName);
-    ```
+Recipe recipe = recipeBook.getRecipe(recipeName);
+```
+
 #### Typescript client
 Please refer to [conjure-typescript-example](https://github.com/palantir/conjure-typescript-example) for an example implementation.
 
