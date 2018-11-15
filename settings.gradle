@@ -7,3 +7,4 @@ include 'recipe-example-api:recipe-example-api-jersey'
 include 'recipe-example-api:recipe-example-api-typescript'
 
 enableFeaturePreview('STABLE_PUBLISHING')
+enableFeaturePreview('IMPROVED_POM_SUPPORT')

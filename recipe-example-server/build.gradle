@@ -1,23 +1,24 @@
 apply plugin: 'application'
 
 dependencies {
-    processor 'org.immutables:value'
+    annotationProcessor 'org.immutables:value'
+    compileOnly 'org.immutables:value::annotations'
 
-    compile project(':recipe-example-api:recipe-example-api-objects')
-    compile project(':recipe-example-api:recipe-example-api-jersey')
+    implementation project(':recipe-example-api:recipe-example-api-objects')
+    implementation project(':recipe-example-api:recipe-example-api-jersey')
 
-    compile 'com.google.guava:guava'
-    compile 'com.palantir.conjure.java.runtime:conjure-java-jackson-serialization'
-    compile 'com.palantir.conjure.java.runtime:conjure-java-jersey-server'
-    compile 'com.palantir.websecurity:dropwizard-web-security'
-    compile 'io.dropwizard:dropwizard-core'
-    compile 'org.slf4j:slf4j-api'
+    implementation 'com.google.guava:guava'
+    implementation 'com.palantir.conjure.java.runtime:conjure-java-jackson-serialization'
+    implementation 'com.palantir.conjure.java.runtime:conjure-java-jersey-server'
+    implementation 'com.palantir.websecurity:dropwizard-web-security'
+    implementation 'io.dropwizard:dropwizard-core'
+    implementation 'org.slf4j:slf4j-api'
 
-    testCompile 'com.netflix.feign:feign-jackson'
-    testCompile 'com.netflix.feign:feign-jaxrs'
-    testCompile 'junit:junit'
-    testCompile 'org.assertj:assertj-core'
-    testCompile 'io.dropwizard:dropwizard-testing'
+    testImplementation 'junit:junit'
+    testImplementation 'org.assertj:assertj-core'
+    testImplementation 'io.dropwizard:dropwizard-testing'
+    testImplementation 'com.palantir.conjure.java.runtime:conjure-java-jaxrs-client'
+    testImplementation 'com.palantir.conjure.java.api:test-utils'
 }
 
 mainClassName = 'com.palantir.conjure.examples.RecipeBookApplication'
