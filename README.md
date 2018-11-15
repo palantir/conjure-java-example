@@ -1,4 +1,4 @@
-s# conjure-java-example
+# conjure-java-example
 A small recipe application that demonstrates the simple usage of conjure tooling.
 
 ## Overview
@@ -8,7 +8,7 @@ A small recipe application that demonstrates the simple usage of conjure tooling
 This example project uses the following tools and libraries, please consult their respective documentation for more information.
 
 * [conjure](https://github.com/palantir/conjure) - IDL for defining APIs once and generating client/server interfaces in different languages.
-    * [conjure-java-runtime](https://github.com/palantir/http-remoting/) - conjure libraries for HTTP&JSON-based RPC using Retrofit, Feign, OkHttp as clients and Jetty/Jersey as servers
+    * [conjure-java-runtime](https://github.com/palantir/conjure-java-runtime/) - conjure libraries for HTTP&JSON-based RPC using Retrofit, Feign, OkHttp as clients and Jetty/Jersey as servers
     * [conjure-java](https://github.com/palantir/conjure-java) - conjure generator for java clients and servers 
     * [conjure-typescript](https://github.com/palantir/conjure-typescript) - conjure generator for typescript clients
 * [gradle](https://gradle.org/) - a highly flexible build tool. Some of the gradle plugins applied are:
