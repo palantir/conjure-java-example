@@ -76,42 +76,44 @@ This example project uses the following tools and libraries, please consult thei
 
 #### Modify existing APIs
 To modify the existing bindings in this project:
-1. Make changes to the `recipe-example-api/src/main/conjure/recipe-api.yml` file
+1. Make changes to the [`recipe-example-api.yml`](/recipe-example-api/src/main/conjure/recipe-example-api.yml) file
 2. Run `./gradlew compileConjure` or a more specific task such as `./gradlew compileConjureObjects`, to check if the changes compile
 3. Or run `./gradlew idea` or `./gradlew eclipse` to update the bindings for your IDE
 
 #### Generate new binding for a different language
 To generate bindings for a new language. Note that currently `gradle-conjure` plugin only supports generation of java, typescript, and python bindings.
-1. Add a new sub project under `recipe-example-api` by modifying the `settings.gradle` file. 
+1. Add a new sub project under `recipe-example-api` by modifying the [`settings.gradle`](/settings.gradle) file. 
     ```diff
-    ...
-    include 'example-api:example-api-typescript'
-    + include 'example-api:example-api-python'
+     ...
+     include 'example-api:example-api-typescript'
+    +include 'example-api:example-api-python'
     ```
-2. Optional: use the gradle script `configure` closure in `recipe-example-api/build.gradle` to configure project specific settings for the new sub project.
+2. Optional: use the gradle script `configure` closure in [`recipe-example-api/build.gradle`](/recipe-example-api/build.gradle) to configure project specific settings for the new sub project.
 3. Specify conjure python dependency versions in versions.props
    ```diff
-   + com.palantir.conjure.python:* = 3.4.0
+   +com.palantir.conjure.python:* = 3.4.0
    ```
 4. run `./gradlew compileConjure` to generate new bindings for python.
 
 #### Generate Java retrofit interfaces
 Similar to how we add the conjure generation for python above, we can add a new project to generate java retrofit interfaces
-1. add a new sub project under `recipe-example-api` by modifying the `settings.gradle` file. 
+1. add a new sub project under `recipe-example-api` by modifying the [`settings.gradle`](/settings.gradle) file. 
     ```diff
-    ...
-    include 'example-api:example-api-typescript'
-    + include 'recipe-example-api:recipe-example-api-retrofit'
+     ...
+     include 'example-api:example-api-typescript'
+    +include 'recipe-example-api:recipe-example-api-retrofit'
     ```
-2. Optional: use the gradle script `configure` closure in `recipe-example-api/build.gradle` to configure project specific settings for the new sub project. 
-3. run `./gradlew compileConjureRetrofit` to generate new bindings for python.
+2. Optional: use the gradle script `configure` closure in [`recipe-example-api/build.gradle`](/recipe-example-api/build.gradle) to configure project specific settings for the new sub project. 
+3. run `./gradlew compileConjureRetrofit` to generate new bindings for retrofit2.
 
 ### Writing Clients
 
-Please see the following subsections for examples of writing recipe clients in different languages. To dev against this  recipe application, you can either run the server locally via `./gradlew run` or spin up a docker container using the `palantir/recipe-example-server:latest` image.
+Please see the following subsections for examples of writing recipe clients in different languages. 
+To dev against this recipe application, you can either run the server locally via `./gradlew run` or spin up a docker
+ container using the `palantir/recipe-example-server:latest` image.
 
 #### Java client
-The tests in `recipe-example-server/src/test/java` illustrate simple examples of how you would use a Conjure jaxrs client to interact with the application. E.g.
+The tests in [`recipe-example-server/src/test/java`](recipe-example-server/src/test/java) illustrate simple examples of how you would use a Conjure jaxrs client to interact with the application. E.g.
 
 ```java
 RecipeBookService recipeBook = JaxRsClient.create(
