@@ -129,6 +129,3 @@ Recipe recipe = recipeBook.getRecipe(recipeName);
 
 #### Typescript client
 Please refer to [conjure-typescript-example](https://github.com/palantir/conjure-typescript-example) for an example implementation.
-
-#### TODO add conjure-java runtime example
-#### TODO add tracing example
