@@ -1,7 +1,7 @@
 com.google.guava:guava = 23.6.1-jre
 com.netflix.feign:feign-*= 8.18.0
 com.palantir.conjure:conjure = 4.5.1
-com.palantir.conjure.java:* = 2.11.0
+com.palantir.conjure.java:* = 3.0.0
 com.palantir.conjure.java.runtime:* = 4.16.0
 com.palantir.conjure.java.api:test-utils = 2.2.0
 com.palantir.conjure.typescript:* = 3.5.0
