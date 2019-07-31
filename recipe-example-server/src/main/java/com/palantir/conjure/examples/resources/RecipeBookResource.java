@@ -16,7 +16,6 @@
 
 package com.palantir.conjure.examples.resources;
 
-import com.google.common.base.Preconditions;
 import com.palantir.conjure.examples.recipe.api.Recipe;
 import com.palantir.conjure.examples.recipe.api.RecipeBookService;
 import com.palantir.conjure.examples.recipe.api.RecipeErrors;
@@ -38,7 +37,7 @@ public final class RecipeBookResource implements RecipeBookService {
 
     @Override
     public Recipe getRecipe(RecipeName name) {
-        Preconditions.checkNotNull(name, "Recipe name must be provided.");
+        com.palantir.logsafe.Preconditions.checkNotNull(name, "Recipe name must be provided.");
         checkIfRecipeExists(name);
 
         return recipes.get(name);
