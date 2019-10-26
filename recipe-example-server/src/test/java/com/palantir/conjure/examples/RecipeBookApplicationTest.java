@@ -16,6 +16,7 @@
 
 package com.palantir.conjure.examples;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 import com.google.common.collect.ImmutableList;
@@ -79,10 +80,10 @@ public class RecipeBookApplicationTest {
         Recipe recipe = client.getRecipe(recipeName);
         Recipe expectedRecipe = RULE.getConfiguration().getRecipes().stream()
                 .filter(r -> r.getName().equals(recipeName)).findFirst().get();
-        assertEquals(expectedRecipe, recipe);
+        assertThat(recipe).isEqualTo(expectedRecipe);
 
         Set<Recipe> recipes = client.getAllRecipes();
-        assertEquals(RULE.getConfiguration().getRecipes(), recipes);
+        assertThat(recipes).isEqualTo(RULE.getConfiguration().getRecipes());
     }
 
     @Test
@@ -100,6 +101,6 @@ public class RecipeBookApplicationTest {
                                 .build())
                         .durationInSeconds(2700)
                         .build())));
-        assertEquals(expectedRecipe, recipe);
+        assertThat(recipe).isEqualTo(expectedRecipe);
     }
 }
