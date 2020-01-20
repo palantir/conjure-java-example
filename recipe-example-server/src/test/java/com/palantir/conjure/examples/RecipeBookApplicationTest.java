@@ -96,7 +96,7 @@ public class RecipeBookApplicationTest {
                 RecipeStep.bake(BakeStep.builder()
                         .temperature(Temperature.builder()
                                 .degree(220)
-                                .unit(TemperatureUnit.CELCIUS)
+                                .unit(TemperatureUnit.CELSIUS)
                                 .build())
                         .durationInSeconds(2700)
                         .build())));

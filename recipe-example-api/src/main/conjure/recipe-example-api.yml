@@ -32,7 +32,7 @@ types:
       TemperatureUnit:
         values:
           - FAHRENHEIT
-          - CELCIUS
+          - CELSIUS
 
     errors:
       RecipeNotFound:
