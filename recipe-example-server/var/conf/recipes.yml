@@ -30,6 +30,6 @@ recipes:
         bake:
           temperature:
             degree: 220
-            unit: "CELCIUS"
+            unit: "CELSIUS"
           durationInSeconds: 2700
 
