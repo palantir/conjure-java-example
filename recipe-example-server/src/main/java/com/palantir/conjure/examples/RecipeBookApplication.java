@@ -46,7 +46,6 @@ public final class RecipeBookApplication extends Application<RecipeBookConfigura
         RecipeBookResource resource = new RecipeBookResource(configuration.getRecipes());
         environment.jersey().register(resource);
 
-
         // must register ConjureJerseyFeature to map conjure error types.
         environment.jersey().register(ConjureJerseyFeature.INSTANCE);
     }

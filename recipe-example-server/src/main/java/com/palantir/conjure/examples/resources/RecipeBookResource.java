@@ -31,8 +31,7 @@ public final class RecipeBookResource implements RecipeBookService {
     private final Map<RecipeName, Recipe> recipes;
 
     public RecipeBookResource(Set<Recipe> recipes) {
-        this.recipes = recipes.stream()
-                .collect(Collectors.toConcurrentMap(Recipe::getName, Function.identity()));
+        this.recipes = recipes.stream().collect(Collectors.toConcurrentMap(Recipe::getName, Function.identity()));
     }
 
     @Override
