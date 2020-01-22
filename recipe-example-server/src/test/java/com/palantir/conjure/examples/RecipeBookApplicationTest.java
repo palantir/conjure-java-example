@@ -49,8 +49,8 @@ public class RecipeBookApplicationTest {
     private static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
 
     @ClassRule
-    public static final DropwizardAppRule<RecipeBookConfiguration> RULE =
-            new DropwizardAppRule<>(RecipeBookApplication.class, Resources.getResource("test.yml").getPath());
+    public static final DropwizardAppRule<RecipeBookConfiguration> RULE = new DropwizardAppRule<>(
+            RecipeBookApplication.class, Resources.getResource("test.yml").getPath());
 
     private static RecipeBookService client;
 
@@ -60,8 +60,7 @@ public class RecipeBookApplicationTest {
                 RecipeBookService.class,
                 UserAgent.of(Agent.of("test", "0.0.0")),
                 NoOpHostEventsSink.INSTANCE,
-                ClientConfigurations.of(ServiceConfiguration
-                        .builder()
+                ClientConfigurations.of(ServiceConfiguration.builder()
                         .addUris(String.format("http://localhost:%d/examples/api/", RULE.getLocalPort()))
                         .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
                         .build()));
@@ -78,7 +77,9 @@ public class RecipeBookApplicationTest {
         RecipeName recipeName = RecipeName.of("roasted broccoli with garlic");
         Recipe recipe = client.getRecipe(recipeName);
         Recipe expectedRecipe = RULE.getConfiguration().getRecipes().stream()
-                .filter(r -> r.getName().equals(recipeName)).findFirst().get();
+                .filter(r -> r.getName().equals(recipeName))
+                .findFirst()
+                .get();
         assertThat(recipe).isEqualTo(expectedRecipe);
 
         Set<Recipe> recipes = client.getAllRecipes();
@@ -89,17 +90,19 @@ public class RecipeBookApplicationTest {
     public void getRecipeWithBake() {
         RecipeName recipeName = RecipeName.of("baked potatoes");
         Recipe recipe = client.getRecipe(recipeName);
-        Recipe expectedRecipe = Recipe.of(recipeName, ImmutableList.of(
-                RecipeStep.mix(ImmutableSet.of(
-                        Ingredient.of("rub oil all over the potatoes"),
-                        Ingredient.of("Rub salt all over the potatoes"))),
-                RecipeStep.bake(BakeStep.builder()
-                        .temperature(Temperature.builder()
-                                .degree(220)
-                                .unit(TemperatureUnit.CELSIUS)
-                                .build())
-                        .durationInSeconds(2700)
-                        .build())));
+        Recipe expectedRecipe = Recipe.of(
+                recipeName,
+                ImmutableList.of(
+                        RecipeStep.mix(ImmutableSet.of(
+                                Ingredient.of("rub oil all over the potatoes"),
+                                Ingredient.of("Rub salt all over the potatoes"))),
+                        RecipeStep.bake(BakeStep.builder()
+                                .temperature(Temperature.builder()
+                                        .degree(220)
+                                        .unit(TemperatureUnit.CELSIUS)
+                                        .build())
+                                .durationInSeconds(2700)
+                                .build())));
         assertThat(recipe).isEqualTo(expectedRecipe);
     }
 }
