@@ -41,9 +41,9 @@ import com.palantir.conjure.java.okhttp.NoOpHostEventsSink;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import java.nio.file.Paths;
 import java.util.Set;
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class RecipeBookApplicationTest {
     private static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
@@ -54,7 +54,7 @@ public class RecipeBookApplicationTest {
 
     private static RecipeBookService client;
 
-    @BeforeClass
+    @BeforeAll
     public static void before() {
         client = JaxRsClient.create(
                 RecipeBookService.class,
