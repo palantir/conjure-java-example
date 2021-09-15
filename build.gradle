@@ -1,10 +1,7 @@
 buildscript {
     repositories {
-        repositories {
-            mavenCentral()
-            maven { url 'https://dl.bintray.com/palantir/releases/' }
-            maven { url 'https://plugins.gradle.org/m2/' }
-        }
+        gradlePluginPortal()
+        mavenCentral()
     }
 
     dependencies {
@@ -31,7 +28,6 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven { url 'https://dl.bintray.com/palantir/releases/' }
     }
 }
 
