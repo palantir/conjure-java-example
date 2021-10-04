@@ -16,35 +16,9 @@
 
 package com.palantir.conjure.examples;
 
-import static org.assertj.core.api.Assertions.assertThat;
+/*
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.io.Resources;
-import com.palantir.conjure.examples.recipe.api.BakeStep;
-import com.palantir.conjure.examples.recipe.api.Ingredient;
-import com.palantir.conjure.examples.recipe.api.Recipe;
-import com.palantir.conjure.examples.recipe.api.RecipeBookService;
-import com.palantir.conjure.examples.recipe.api.RecipeErrors;
-import com.palantir.conjure.examples.recipe.api.RecipeName;
-import com.palantir.conjure.examples.recipe.api.RecipeStep;
-import com.palantir.conjure.examples.recipe.api.Temperature;
-import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
-import com.palantir.conjure.java.api.config.service.ServiceConfiguration;
-import com.palantir.conjure.java.api.config.service.UserAgent;
-import com.palantir.conjure.java.api.config.service.UserAgent.Agent;
-import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
-import com.palantir.conjure.java.api.testing.Assertions;
-import com.palantir.conjure.java.client.config.ClientConfigurations;
-import com.palantir.conjure.java.client.jaxrs.JaxRsClient;
-import com.palantir.conjure.java.okhttp.NoOpHostEventsSink;
-import io.dropwizard.testing.junit.DropwizardAppRule;
-import java.nio.file.Paths;
-import java.util.Set;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Test;
-
+@SuppressWarnings("JUnit5RuleUsage")
 public class RecipeBookApplicationTest {
     private static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
 
@@ -54,7 +28,7 @@ public class RecipeBookApplicationTest {
 
     private static RecipeBookService client;
 
-    @BeforeClass
+    @BeforeAll
     public static void before() {
         client = JaxRsClient.create(
                 RecipeBookService.class,
@@ -106,3 +80,4 @@ public class RecipeBookApplicationTest {
         assertThat(recipe).isEqualTo(expectedRecipe);
     }
 }
+*/
