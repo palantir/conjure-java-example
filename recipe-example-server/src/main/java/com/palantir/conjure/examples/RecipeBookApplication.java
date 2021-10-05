@@ -16,37 +16,25 @@
 
 package com.palantir.conjure.examples;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.ImmutableSet;
+import com.palantir.conjure.examples.recipe.api.RecipeBookServiceEndpoints;
 import com.palantir.conjure.examples.resources.RecipeBookResource;
-import com.palantir.conjure.java.serialization.ObjectMappers;
-import com.palantir.conjure.java.server.jersey.ConjureJerseyFeature;
-import com.palantir.websecurity.WebSecurityBundle;
-import io.dropwizard.Application;
-import io.dropwizard.jackson.DiscoverableSubtypeResolver;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
+import com.palantir.conjure.java.undertow.runtime.ConjureHandler;
+import io.undertow.Undertow;
 
-public final class RecipeBookApplication extends Application<RecipeBookConfiguration> {
+public final class RecipeBookApplication {
 
-    public static void main(String[] args) throws Exception {
-        new RecipeBookApplication().run(args);
+    private RecipeBookApplication() {
+        // noop
     }
 
-    @Override
-    public void initialize(Bootstrap<RecipeBookConfiguration> bootstrap) {
-        ObjectMapper conjureObjectMapper = ObjectMappers.newServerObjectMapper()
-                // needs discoverable subtype resolver for DW polymorphic configuration mechanism
-                .setSubtypeResolver(new DiscoverableSubtypeResolver());
-        bootstrap.setObjectMapper(conjureObjectMapper);
-        bootstrap.addBundle(new WebSecurityBundle());
-    }
-
-    @Override
-    public void run(RecipeBookConfiguration configuration, Environment environment) {
-        RecipeBookResource resource = new RecipeBookResource(configuration.getRecipes());
-        environment.jersey().register(resource);
-
-        // must register ConjureJerseyFeature to map conjure error types.
-        environment.jersey().register(ConjureJerseyFeature.INSTANCE);
+    public static void main(String[] _args) {
+        Undertow server = Undertow.builder()
+                .addHttpListener(8080, "0.0.0.0")
+                .setHandler(ConjureHandler.builder()
+                        .services(RecipeBookServiceEndpoints.of(new RecipeBookResource(ImmutableSet.of())))
+                        .build())
+                .build();
+        server.start();
     }
 }

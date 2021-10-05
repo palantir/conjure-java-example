@@ -6,17 +6,20 @@ dependencies {
 
     implementation project(':recipe-example-api:recipe-example-api-objects')
     implementation project(':recipe-example-api:recipe-example-api-jersey')
+    implementation project(':recipe-example-api:recipe-example-api-undertow')
+
+    implementation 'com.palantir.conjure.java:conjure-java-undertow-runtime'
 
     implementation 'com.google.guava:guava'
     implementation 'com.palantir.conjure.java.runtime:conjure-java-jackson-serialization'
     implementation 'com.palantir.conjure.java.runtime:conjure-java-jersey-server'
-    implementation 'com.palantir.websecurity:dropwizard-web-security'
-    implementation 'io.dropwizard:dropwizard-core'
+    // implementation 'com.palantir.websecurity:dropwizard-web-security'
+    // implementation 'io.dropwizard:dropwizard-core'
     implementation 'org.slf4j:slf4j-api'
 
     testImplementation 'junit:junit'
     testImplementation 'org.assertj:assertj-core'
-    testImplementation 'io.dropwizard:dropwizard-testing'
+    //testImplementation 'io.dropwizard:dropwizard-testing'
     testImplementation 'com.palantir.conjure.java.runtime:conjure-java-jaxrs-client'
     testImplementation 'com.palantir.conjure.java.api:test-utils'
     testImplementation 'org.junit.jupiter:junit-jupiter'
