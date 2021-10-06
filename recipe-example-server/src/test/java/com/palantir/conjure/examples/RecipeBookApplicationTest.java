@@ -16,15 +16,26 @@
 
 package com.palantir.conjure.examples;
 
-/*
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.palantir.conjure.examples.recipe.api.*;
+import com.palantir.conjure.java.api.config.service.ServiceConfiguration;
+import com.palantir.conjure.java.api.config.service.UserAgent;
+import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
+import com.palantir.conjure.java.api.testing.Assertions;
+import com.palantir.conjure.java.client.config.ClientConfigurations;
+import com.palantir.conjure.java.client.jaxrs.JaxRsClient;
+import com.palantir.conjure.java.okhttp.NoOpHostEventsSink;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-@SuppressWarnings("JUnit5RuleUsage")
+import java.nio.file.Paths;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+
 public class RecipeBookApplicationTest {
     private static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
-
-    @ClassRule
-    public static final DropwizardAppRule<RecipeBookConfiguration> RULE = new DropwizardAppRule<>(
-            RecipeBookApplication.class, Resources.getResource("test.yml").getPath());
 
     private static RecipeBookService client;
 
@@ -32,10 +43,10 @@ public class RecipeBookApplicationTest {
     public static void before() {
         client = JaxRsClient.create(
                 RecipeBookService.class,
-                UserAgent.of(Agent.of("test", "0.0.0")),
+                UserAgent.of(UserAgent.Agent.of("test", "0.0.0")),
                 NoOpHostEventsSink.INSTANCE,
                 ClientConfigurations.of(ServiceConfiguration.builder()
-                        .addUris(String.format("http://localhost:%d/examples/api/", RULE.getLocalPort()))
+                        .addUris("http://localhost:8345/api/")
                         .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
                         .build()));
     }
@@ -46,7 +57,7 @@ public class RecipeBookApplicationTest {
                 .isGeneratedFromErrorType(RecipeErrors.RECIPE_NOT_FOUND);
     }
 
-    @Test
+    /*@Test
     public void getRecipe() {
         RecipeName recipeName = RecipeName.of("roasted broccoli with garlic");
         Recipe recipe = client.getRecipe(recipeName);
@@ -58,7 +69,7 @@ public class RecipeBookApplicationTest {
 
         Set<Recipe> recipes = client.getAllRecipes();
         assertThat(recipes).isEqualTo(RULE.getConfiguration().getRecipes());
-    }
+    }*/
 
     @Test
     public void getRecipeWithBake() {
@@ -80,4 +91,4 @@ public class RecipeBookApplicationTest {
         assertThat(recipe).isEqualTo(expectedRecipe);
     }
 }
-*/
+
