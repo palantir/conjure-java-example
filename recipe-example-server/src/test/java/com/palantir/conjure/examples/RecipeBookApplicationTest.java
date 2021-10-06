@@ -16,9 +16,19 @@
 
 package com.palantir.conjure.examples;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.palantir.conjure.examples.recipe.api.*;
+import com.palantir.conjure.examples.recipe.api.BakeStep;
+import com.palantir.conjure.examples.recipe.api.Ingredient;
+import com.palantir.conjure.examples.recipe.api.Recipe;
+import com.palantir.conjure.examples.recipe.api.RecipeBookService;
+import com.palantir.conjure.examples.recipe.api.RecipeErrors;
+import com.palantir.conjure.examples.recipe.api.RecipeName;
+import com.palantir.conjure.examples.recipe.api.RecipeStep;
+import com.palantir.conjure.examples.recipe.api.Temperature;
+import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
 import com.palantir.conjure.java.api.config.service.ServiceConfiguration;
 import com.palantir.conjure.java.api.config.service.UserAgent;
 import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
@@ -26,12 +36,9 @@ import com.palantir.conjure.java.api.testing.Assertions;
 import com.palantir.conjure.java.client.config.ClientConfigurations;
 import com.palantir.conjure.java.client.jaxrs.JaxRsClient;
 import com.palantir.conjure.java.okhttp.NoOpHostEventsSink;
+import java.nio.file.Paths;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.nio.file.Paths;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class RecipeBookApplicationTest {
@@ -91,4 +98,3 @@ public class RecipeBookApplicationTest {
         assertThat(recipe).isEqualTo(expectedRecipe);
     }
 }
-

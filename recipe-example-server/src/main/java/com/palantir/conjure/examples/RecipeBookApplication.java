@@ -17,13 +17,20 @@
 package com.palantir.conjure.examples;
 
 import com.google.common.collect.ImmutableSet;
-import com.palantir.conjure.examples.recipe.api.*;
+import com.palantir.conjure.examples.recipe.api.BakeStep;
+import com.palantir.conjure.examples.recipe.api.Ingredient;
+import com.palantir.conjure.examples.recipe.api.Recipe;
+import com.palantir.conjure.examples.recipe.api.RecipeBookServiceEndpoints;
+import com.palantir.conjure.examples.recipe.api.RecipeName;
+import com.palantir.conjure.examples.recipe.api.RecipeStep;
+import com.palantir.conjure.examples.recipe.api.Temperature;
+import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
 import com.palantir.conjure.examples.resources.RecipeBookResource;
 import com.palantir.conjure.java.undertow.runtime.ConjureHandler;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
-
 import java.util.Set;
+
 
 public final class RecipeBookApplication {
 
@@ -50,7 +57,7 @@ public final class RecipeBookApplication {
                                 RecipeStep.mix(ImmutableSet.of(
                                         Ingredient.of("2 tbsp extra olive oil"),
                                         Ingredient.of("chopped garlic")
-                                        )),
+                                )),
                                 RecipeStep.bake(BakeStep.of(
                                         Temperature.of(230, TemperatureUnit.CELSIUS),
                                         1200))))
