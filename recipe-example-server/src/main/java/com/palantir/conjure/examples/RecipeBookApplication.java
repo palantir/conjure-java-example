@@ -40,7 +40,7 @@ public final class RecipeBookApplication {
 
     public static void main(String[] _args) {
         Undertow server = Undertow.builder()
-                .addHttpListener(8345, "0.0.0.0")
+                .addHttpListener(8000, "0.0.0.0")
                 .setHandler(Handlers.path().addPrefixPath("api/", ConjureHandler.builder()
                         .services(RecipeBookServiceEndpoints.of(new RecipeBookResource(someRecipes())))
                         .build()))

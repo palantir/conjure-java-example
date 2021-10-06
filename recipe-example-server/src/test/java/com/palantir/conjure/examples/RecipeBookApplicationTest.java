@@ -53,7 +53,7 @@ public class RecipeBookApplicationTest {
                 UserAgent.of(UserAgent.Agent.of("test", "0.0.0")),
                 NoOpHostEventsSink.INSTANCE,
                 ClientConfigurations.of(ServiceConfiguration.builder()
-                        .addUris("http://localhost:8345/api/")
+                        .addUris("http://localhost:8000/api/")
                         .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
                         .build()));
     }
