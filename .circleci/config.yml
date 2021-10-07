@@ -52,7 +52,7 @@ jobs:
           path: ~/poms
   publish-docker:
     docker:
-    # - image: circleci/openjdk:8u171-jdk
+      - image: circleci/openjdk:8u171-jdk
       - image: cimg/openjdk:11.0.10-node
     steps:
       - setup_remote_docker
@@ -63,7 +63,10 @@ jobs:
           key: gradle-cache-v2-{{ checksum "versions.props" }}-{{ checksum "build.gradle" }}
       - run: ./gradlew distTar
       - run: ./scripts/build_docker.sh
-      - run: docker run palantirtechnologies/recipe-example-server:$(git describe --tags --always --first-parent) --help
+      - run:
+          command: |
+            docker run palantirtechnologies/recipe-example-server:$(git describe --tags --always --first-parent) --help
+          background: true
       - deploy:
           command: |
             if [[ "${CIRCLE_BRANCH}" == "develop" || "${CIRCLE_TAG}" =~ [0-9]+(\.[0-9]+)+(-[a-zA-Z]+[0-9]*)* ]]; then
