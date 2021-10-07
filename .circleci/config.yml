@@ -24,13 +24,15 @@ jobs:
           paths:
             - ~/.gradle/caches
 
+      - run: ./gradlew --parallel build -x test
+
       - run:
-          name: run server so tests have something to hit
+          name: run server in background so tests have something to hit
           command: |
             ./gradlew run
           background: true
 
-      - run: ./gradlew --parallel build
+      - run: ./gradlew test
 
       - run:
           command: |
