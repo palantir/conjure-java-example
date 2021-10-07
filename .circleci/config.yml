@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # - image: cimg/openjdk:11.0.10-node
-      - image: cimg/openjdk:17.0.0-node
+      - image: cimg/openjdk:15.0.2-node
     environment:
       GRADLE_OPTS: -Dorg.gradle.console=plain -Dorg.gradle.internal.launcher.welcomeMessageEnabled=false
     steps:
@@ -52,7 +52,7 @@ jobs:
           path: ~/poms
   publish-docker:
     docker:
-      - image: cimg/openjdk:17.0.0-node
+      - image: cimg/openjdk:15.0.2-node
       # - image: cimg/openjdk:11.0.10-node
     steps:
       - setup_remote_docker
