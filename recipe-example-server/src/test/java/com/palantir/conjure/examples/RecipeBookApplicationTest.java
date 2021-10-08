@@ -16,6 +16,7 @@
 
 package com.palantir.conjure.examples;
 
+import static com.palantir.conjure.examples.RecipeBookApplication.TRUSTSTORE_PATH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.common.collect.ImmutableList;
@@ -41,7 +42,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class RecipeBookApplicationTest {
-    private static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
 
     private static RecipeBookService client;
 
@@ -52,7 +52,7 @@ public class RecipeBookApplicationTest {
                 UserAgent.of(UserAgent.Agent.of("test", "0.0.0")),
                 NoOpHostEventsSink.INSTANCE,
                 ClientConfigurations.of(ServiceConfiguration.builder()
-                        .addUris("http://localhost:8345/api/")
+                        .addUris("https://localhost:8345/api/")
                         .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
                         .build()));
     }

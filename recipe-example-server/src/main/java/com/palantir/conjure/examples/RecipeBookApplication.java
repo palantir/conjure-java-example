@@ -26,20 +26,27 @@ import com.palantir.conjure.examples.recipe.api.RecipeStep;
 import com.palantir.conjure.examples.recipe.api.Temperature;
 import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
 import com.palantir.conjure.examples.resources.RecipeBookResource;
+import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
+import com.palantir.conjure.java.config.ssl.SslSocketFactories;
 import com.palantir.conjure.java.undertow.runtime.ConjureHandler;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
+import java.nio.file.Paths;
 import java.util.Set;
+import javax.net.ssl.SSLContext;
 
 public final class RecipeBookApplication {
+    protected static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
 
     private RecipeBookApplication() {
         // noop
     }
 
     public static void main(String[] _args) {
+        SSLContext sslContext = SslSocketFactories.createSslContext(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)));
+
         Undertow server = Undertow.builder()
-                .addHttpListener(8345, "0.0.0.0")
+                .addHttpsListener(8345, "0.0.0.0", sslContext)
                 .setHandler(Handlers.path()
                         .addPrefixPath(
                                 "api/",

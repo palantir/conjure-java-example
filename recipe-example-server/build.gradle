@@ -13,6 +13,8 @@ dependencies {
     implementation 'com.google.guava:guava'
     implementation 'com.palantir.conjure.java.runtime:conjure-java-jackson-serialization'
     implementation 'com.palantir.conjure.java.runtime:conjure-java-jersey-server'
+    implementation 'com.palantir.conjure.java.runtime:keystores'
+    implementation 'com.palantir.conjure.java.api:ssl-config'
     // implementation 'com.palantir.websecurity:dropwizard-web-security'
     // implementation 'io.dropwizard:dropwizard-core'
     implementation 'org.slf4j:slf4j-api'
