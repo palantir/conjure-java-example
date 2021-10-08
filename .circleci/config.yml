@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-      # - image: cimg/openjdk:11.0.10-node
       - image: cimg/openjdk:15.0.2-node
     environment:
       GRADLE_OPTS: -Dorg.gradle.console=plain -Dorg.gradle.internal.launcher.welcomeMessageEnabled=false
@@ -27,7 +26,7 @@ jobs:
       - run: ./gradlew --parallel build -x test
 
       - run:
-          name: run server in background so tests have something to hit
+          name: run the server in background so tests in the next step have something to hit.
           command: |
             ./gradlew run
           background: true
@@ -53,7 +52,6 @@ jobs:
   publish-docker:
     docker:
       - image: cimg/openjdk:15.0.2-node
-      # - image: cimg/openjdk:11.0.10-node
     steps:
       - setup_remote_docker
       - checkout
@@ -64,6 +62,7 @@ jobs:
       - run: ./gradlew distTar
       - run: ./scripts/build_docker.sh
       - run:
+          name: This command actually doesn't do anything, just runs the server. We're keeping it here as an example.
           command: |
             docker run palantirtechnologies/recipe-example-server:$(git describe --tags --always --first-parent) --help
           background: true

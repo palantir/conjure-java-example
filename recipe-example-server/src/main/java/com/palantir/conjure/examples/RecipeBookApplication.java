@@ -31,7 +31,6 @@ import io.undertow.Handlers;
 import io.undertow.Undertow;
 import java.util.Set;
 
-
 public final class RecipeBookApplication {
 
     private RecipeBookApplication() {
@@ -41,9 +40,12 @@ public final class RecipeBookApplication {
     public static void main(String[] _args) {
         Undertow server = Undertow.builder()
                 .addHttpListener(8000, "0.0.0.0")
-                .setHandler(Handlers.path().addPrefixPath("api/", ConjureHandler.builder()
-                        .services(RecipeBookServiceEndpoints.of(new RecipeBookResource(someRecipes())))
-                        .build()))
+                .setHandler(Handlers.path()
+                        .addPrefixPath(
+                                "api/",
+                                ConjureHandler.builder()
+                                        .services(RecipeBookServiceEndpoints.of(new RecipeBookResource(someRecipes())))
+                                        .build()))
                 .build();
         server.start();
     }
@@ -55,23 +57,16 @@ public final class RecipeBookApplication {
                         .steps(ImmutableSet.of(
                                 RecipeStep.chop(Ingredient.valueOf("3 cloves of garlic")),
                                 RecipeStep.mix(ImmutableSet.of(
-                                        Ingredient.of("2 tbsp extra olive oil"),
-                                        Ingredient.of("chopped garlic")
-                                )),
-                                RecipeStep.bake(BakeStep.of(
-                                        Temperature.of(230, TemperatureUnit.CELSIUS),
-                                        1200))))
+                                        Ingredient.of("2 tbsp extra olive oil"), Ingredient.of("chopped garlic"))),
+                                RecipeStep.bake(BakeStep.of(Temperature.of(230, TemperatureUnit.CELSIUS), 1200))))
                         .build(),
                 Recipe.builder()
                         .name(RecipeName.of("baked potatoes"))
                         .steps(ImmutableSet.of(
                                 RecipeStep.mix(ImmutableSet.of(
                                         Ingredient.of("rub oil all over the potatoes"),
-                                        Ingredient.of("Rub salt all over the potatoes")
-                                )),
-                                RecipeStep.bake(BakeStep.of(
-                                        Temperature.of(220, TemperatureUnit.CELSIUS),
-                                        2700))))
+                                        Ingredient.of("Rub salt all over the potatoes"))),
+                                RecipeStep.bake(BakeStep.of(Temperature.of(220, TemperatureUnit.CELSIUS), 2700))))
                         .build());
     }
 }

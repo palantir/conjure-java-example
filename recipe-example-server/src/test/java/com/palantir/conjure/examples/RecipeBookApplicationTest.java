@@ -40,7 +40,6 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-
 public class RecipeBookApplicationTest {
     private static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
 
@@ -63,20 +62,6 @@ public class RecipeBookApplicationTest {
         Assertions.assertThatRemoteExceptionThrownBy(() -> client.getRecipe(RecipeName.of("doesNotExist")))
                 .isGeneratedFromErrorType(RecipeErrors.RECIPE_NOT_FOUND);
     }
-
-    /*@Test
-    public void getRecipe() {
-        RecipeName recipeName = RecipeName.of("roasted broccoli with garlic");
-        Recipe recipe = client.getRecipe(recipeName);
-        Recipe expectedRecipe = RULE.getConfiguration().getRecipes().stream()
-                .filter(r -> r.getName().equals(recipeName))
-                .findFirst()
-                .get();
-        assertThat(recipe).isEqualTo(expectedRecipe);
-
-        Set<Recipe> recipes = client.getAllRecipes();
-        assertThat(recipes).isEqualTo(RULE.getConfiguration().getRecipes());
-    }*/
 
     @Test
     public void getRecipeWithBake() {

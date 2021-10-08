@@ -1,10 +1,5 @@
 buildscript {
     repositories {
-        //repositories {
-        //    mavenCentral()
-            //maven { url 'https://dl.bintray.com/palantir/releases/' }
-            //maven { url 'https://plugins.gradle.org/m2/' }
-        //}
         gradlePluginPortal()
         mavenCentral()
     }
@@ -27,13 +22,12 @@ apply plugin: 'com.palantir.baseline'
 apply plugin: 'com.palantir.git-version'
 
 allprojects {
-//    apply plugin: 'com.palantir.java-format'
+    apply plugin: 'com.palantir.java-format'
     group 'com.palantir.conjure.examples'
     version gitVersion()
 
     repositories {
         mavenCentral()
-        //maven { url 'https://dl.bintray.com/palantir/releases/' }
     }
 
 }
