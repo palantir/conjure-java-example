@@ -36,23 +36,25 @@ import java.util.Set;
 import javax.net.ssl.SSLContext;
 
 public final class RecipeBookApplication {
-    protected static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
+    // replace this with your own trustStore, this is just to serve as an example
+    protected static final String TRUSTSTORE_PATH = "src/test/resources/foobar.jks";
+    //protected static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
 
     private RecipeBookApplication() {
         // noop
     }
 
     public static void main(String[] _args) {
-        SSLContext sslContext = SslSocketFactories.createSslContext(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)));
+        SslConfiguration sslConfig = SslConfiguration.of(Paths.get(TRUSTSTORE_PATH), Paths.get(TRUSTSTORE_PATH), "changeme");
+        System.out.println("Keystore password: " + sslConfig.keyStorePassword());
+        SSLContext sslContext = SslSocketFactories.createSslContext(sslConfig);
+
 
         Undertow server = Undertow.builder()
                 .addHttpsListener(8345, "0.0.0.0", sslContext)
-                .setHandler(Handlers.path()
-                        .addPrefixPath(
-                                "api/",
-                                ConjureHandler.builder()
-                                        .services(RecipeBookServiceEndpoints.of(new RecipeBookResource(someRecipes())))
-                                        .build()))
+                .setHandler(Handlers.path().addPrefixPath("api/", ConjureHandler.builder()
+                        .services(RecipeBookServiceEndpoints.of(new RecipeBookResource(someRecipes())))
+                        .build()))
                 .build();
         server.start();
     }

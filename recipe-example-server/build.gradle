@@ -35,5 +35,6 @@ mainClassName = 'com.palantir.conjure.examples.RecipeBookApplication'
 
 run {
     args 'server', 'var/conf/recipes.yml'
+    jvmArgs "-Djavax.net.debug=all"
 }
 
