@@ -16,6 +16,7 @@
 
 package com.palantir.conjure.examples;
 
+import static com.palantir.conjure.examples.RecipeBookApplication.KEY_STORE_PATH;
 import static com.palantir.conjure.examples.RecipeBookApplication.TRUSTSTORE_PATH;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,10 +35,18 @@ import com.palantir.conjure.java.api.config.service.ServiceConfiguration;
 import com.palantir.conjure.java.api.config.service.UserAgent;
 import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
 import com.palantir.conjure.java.api.testing.Assertions;
+import com.palantir.conjure.java.client.config.ClientConfiguration;
 import com.palantir.conjure.java.client.config.ClientConfigurations;
+import com.palantir.conjure.java.client.config.NodeSelectionStrategy;
 import com.palantir.conjure.java.client.jaxrs.JaxRsClient;
+import com.palantir.conjure.java.config.ssl.SslSocketFactories;
 import com.palantir.conjure.java.okhttp.NoOpHostEventsSink;
+
+import java.net.ProxySelector;
 import java.nio.file.Paths;
+import java.time.Duration;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -47,14 +56,28 @@ public class RecipeBookApplicationTest {
 
     @BeforeAll
     public static void before() {
+//        ClientConfiguration clientConfig = ClientConfigurations.of(ServiceConfiguration.builder()
+//                .addUris("https://localhost:8345/api/")
+//                //.security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH), Paths.get(KEY_STORE_PATH), "changeit"))
+//                .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
+//                .enableGcmCipherSuites(true)
+//                .build());
+
+        //SslConfiguration SSL_CONFIG = SslConfiguration.of(Paths.get(TRUSTSTORE_PATH));
+        SslConfiguration SSL_CONFIG = SslConfiguration.of(Paths.get(TRUSTSTORE_PATH), Paths.get(KEY_STORE_PATH), "changeit");
+
+        ClientConfiguration clientConfig = ClientConfigurations.of(
+                ImmutableList.of("https://localhost:8345/api/"),
+                SslSocketFactories.createSslSocketFactory(SSL_CONFIG),
+                SslSocketFactories.createX509TrustManager(SSL_CONFIG)
+        );
+
         client = JaxRsClient.create(
                 RecipeBookService.class,
                 UserAgent.of(UserAgent.Agent.of("test", "0.0.0")),
                 NoOpHostEventsSink.INSTANCE,
-                ClientConfigurations.of(ServiceConfiguration.builder()
-                        .addUris("https://localhost:8345/api/")
-                        .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
-                        .build()));
+                clientConfig);
+
     }
 
     @Test

@@ -38,3 +38,7 @@ run {
     jvmArgs "-Djavax.net.debug=all"
 }
 
+test {
+    jvmArgs "-Djavax.net.debug=all"
+}
+

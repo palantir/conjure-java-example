@@ -31,24 +31,36 @@ import com.palantir.conjure.java.config.ssl.SslSocketFactories;
 import com.palantir.conjure.java.undertow.runtime.ConjureHandler;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
+import org.xnio.Options;
+import org.xnio.Sequence;
+
 import java.nio.file.Paths;
 import java.util.Set;
 import javax.net.ssl.SSLContext;
 
 public final class RecipeBookApplication {
     // replace this with your own trustStore, this is just to serve as an example
-    protected static final String TRUSTSTORE_PATH = "src/test/resources/foobar.jks";
+    //protected static final String TRUSTSTORE_PATH = "src/test/resources/foobar.jks";
+    //protected static final String TRUSTSTORE_PATH = "src/test/resources/foobar2.jks"; // password changeit, alias selfsigned
+
+//    protected static final String TRUSTSTORE_PATH = "/Library/Java/JavaVirtualMachines/zulu-15.jdk/Contents/Home/lib/security/cacerts"; // password changeit, alias selfsigned
+    //protected static final String TRUSTSTORE_PATH = "src/test/resources/truststore"; // password changeit, alias selfsigned
+    //https://stackoverflow.com/questions/3775483/ssl-handshake-exception/27191803
+    // (base) fferreira83-mac:resources fferreira$ sudo keytool -import -file foobar2.cer -alias selfsigned -keystore /Library/Java/JavaVirtualMachines/zulu-15.jdk/Contents/Home/lib/security/cacerts
+    //protected static final String TRUSTSTORE_PATH = "src/test/resources/conjureexample.jks"; // password changeit
     //protected static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
+
+    protected static final String KEY_STORE_PATH = "src/test/resources/foobar2.jks"; // password changeit, alias selfsigned
+    protected static final String TRUSTSTORE_PATH = "src/test/resources/truststore.foobar2.jks"; // password changeit, alias selfsigned
 
     private RecipeBookApplication() {
         // noop
     }
 
     public static void main(String[] _args) {
-        SslConfiguration sslConfig = SslConfiguration.of(Paths.get(TRUSTSTORE_PATH), Paths.get(TRUSTSTORE_PATH), "changeme");
-        System.out.println("Keystore password: " + sslConfig.keyStorePassword());
+        //SslConfiguration sslConfig = SslConfiguration.of(Paths.get(TRUSTSTORE_PATH));
+        SslConfiguration sslConfig = SslConfiguration.of(Paths.get(TRUSTSTORE_PATH), Paths.get(KEY_STORE_PATH), "changeit");
         SSLContext sslContext = SslSocketFactories.createSslContext(sslConfig);
-
 
         Undertow server = Undertow.builder()
                 .addHttpsListener(8345, "0.0.0.0", sslContext)
