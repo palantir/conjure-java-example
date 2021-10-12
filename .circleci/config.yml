@@ -40,7 +40,8 @@ jobs:
                  --retry-delay 0 \
                  --retry-max-time 40 \
                  --retry-connrefused \
-                 'http://localhost:8345/api'
+                 --insecure \
+                 'https://localhost:8345/api'
 
       - run: ./gradlew test
 
