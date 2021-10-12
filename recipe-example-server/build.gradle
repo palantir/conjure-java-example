@@ -17,6 +17,7 @@ dependencies {
     implementation 'com.palantir.conjure.java.api:ssl-config'
     // implementation 'com.palantir.websecurity:dropwizard-web-security'
     // implementation 'io.dropwizard:dropwizard-core'
+    compile "org.slf4j:slf4j-simple"
     implementation 'org.slf4j:slf4j-api'
 
     testImplementation 'junit:junit'
@@ -35,10 +36,10 @@ mainClassName = 'com.palantir.conjure.examples.RecipeBookApplication'
 
 run {
     args 'server', 'var/conf/recipes.yml'
-    jvmArgs "-Djavax.net.debug=all"
+    //jvmArgs "-Djavax.net.debug=all"
 }
 
 test {
-    jvmArgs "-Djavax.net.debug=all"
+    jvmArgs "-Djavax.net.debug=all -Djavax.net.ssl.trustStore=src/test/resources/certs/server/truststore.jks"
 }
 

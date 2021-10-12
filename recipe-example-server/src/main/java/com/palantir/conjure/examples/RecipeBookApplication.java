@@ -31,6 +31,8 @@ import com.palantir.conjure.java.config.ssl.SslSocketFactories;
 import com.palantir.conjure.java.undertow.runtime.ConjureHandler;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
+import io.undertow.UndertowLogger;
+import org.jboss.logging.Logger;
 import org.xnio.Options;
 import org.xnio.Sequence;
 
@@ -50,8 +52,14 @@ public final class RecipeBookApplication {
     //protected static final String TRUSTSTORE_PATH = "src/test/resources/conjureexample.jks"; // password changeit
     //protected static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
 
-    protected static final String KEY_STORE_PATH = "src/test/resources/foobar2.jks"; // password changeit, alias selfsigned
-    protected static final String TRUSTSTORE_PATH = "src/test/resources/truststore.foobar2.jks"; // password changeit, alias selfsigned
+    //protected static final String KEY_STORE_PATH = "src/test/resources/foobar2.jks"; // password changeit, alias selfsigned
+    //protected static final String TRUSTSTORE_PATH = "src/test/resources/truststore.foobar2.jks"; // password changeit, alias selfsigned
+
+    //protected static final String KEY_STORE_PATH = "src/test/resources/certs/server/KeyStore.jks"; // password changeit, alias selfsigned
+    //protected static final String TRUSTSTORE_PATH = "src/test/resources/certs/server/truststore.jks"; // password changeit, alias selfsigned
+
+    protected static final String KEY_STORE_PATH = "src/test/resources/certs/tmp/keystore.jks"; // password changeit, alias selfsigned
+    protected static final String TRUSTSTORE_PATH = "src/test/resources/certs/tmp/truststore.jks"; // password changeit, alias selfsigned
 
     private RecipeBookApplication() {
         // noop
@@ -62,12 +70,17 @@ public final class RecipeBookApplication {
         SslConfiguration sslConfig = SslConfiguration.of(Paths.get(TRUSTSTORE_PATH), Paths.get(KEY_STORE_PATH), "changeit");
         SSLContext sslContext = SslSocketFactories.createSslContext(sslConfig);
 
+        System.out.println(UndertowLogger.ROOT_LOGGER.isDebugEnabled());
+        System.out.println(UndertowLogger.ROOT_LOGGER.isTraceEnabled());
+        System.out.println(UndertowLogger.ROOT_LOGGER.isInfoEnabled());
+
         Undertow server = Undertow.builder()
                 .addHttpsListener(8345, "0.0.0.0", sslContext)
                 .setHandler(Handlers.path().addPrefixPath("api/", ConjureHandler.builder()
                         .services(RecipeBookServiceEndpoints.of(new RecipeBookResource(someRecipes())))
                         .build()))
                 .build();
+
         server.start();
     }
 
