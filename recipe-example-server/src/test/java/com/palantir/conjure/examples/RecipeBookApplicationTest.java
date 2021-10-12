@@ -61,7 +61,7 @@ public class RecipeBookApplicationTest {
             throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException,
                     KeyManagementException {
 
-        File crtFile = new File("src/test/resources/certs/tmp/ca-cert");
+        File crtFile = new File("src/test/resources/certs/ca-cert");
         Certificate certificate =
                 CertificateFactory.getInstance("X.509").generateCertificate(new FileInputStream(crtFile));
         KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -79,8 +79,6 @@ public class RecipeBookApplicationTest {
         ClientConfiguration clientConfig = ClientConfigurations.of(
                 ImmutableList.of("https://localhost:8345/api/"), sslContext.getSocketFactory(), (X509TrustManager)
                         trustManager[0]);
-
-        // manually add the certificate to the trust store https://stackoverflow.com/a/57046889/26004
 
         client = JaxRsClient.create(
                 RecipeBookService.class,
