@@ -34,14 +34,7 @@ jobs:
       - run:
           name: wait till the server is operational before running the tests
           command: |
-            curl --connect-timeout 5 \
-                 --max-time 10 \
-                 --retry 5 \
-                 --retry-delay 0 \
-                 --retry-max-time 40 \
-                 --retry-connrefused \
-                 --insecure \
-                 'https://localhost:8345/api'
+            sleep 30
 
       - run: ./gradlew test
 
