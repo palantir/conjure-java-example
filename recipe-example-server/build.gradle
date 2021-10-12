@@ -15,14 +15,12 @@ dependencies {
     implementation 'com.palantir.conjure.java.runtime:conjure-java-jersey-server'
     implementation 'com.palantir.conjure.java.runtime:keystores'
     implementation 'com.palantir.conjure.java.api:ssl-config'
-    // implementation 'com.palantir.websecurity:dropwizard-web-security'
-    // implementation 'io.dropwizard:dropwizard-core'
+
     compile "org.slf4j:slf4j-simple"
     implementation 'org.slf4j:slf4j-api'
 
     testImplementation 'junit:junit'
     testImplementation 'org.assertj:assertj-core'
-    //testImplementation 'io.dropwizard:dropwizard-testing'
     testImplementation 'com.palantir.conjure.java.runtime:conjure-java-jaxrs-client'
     testImplementation 'com.palantir.conjure.java.api:test-utils'
     testImplementation 'org.junit.jupiter:junit-jupiter'
