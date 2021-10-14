@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2018 Palantir Technologies Inc. All rights reserved.
+ * (c) Copyright 2021 Palantir Technologies Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package com.palantir.conjure.examples;
 
 import com.google.common.collect.ImmutableSet;
+import com.palantir.conjure.examples.recipe.Configuration;
 import com.palantir.conjure.examples.recipe.api.BakeStep;
 import com.palantir.conjure.examples.recipe.api.Ingredient;
 import com.palantir.conjure.examples.recipe.api.Recipe;
@@ -31,6 +32,7 @@ import com.palantir.conjure.java.config.ssl.SslSocketFactories;
 import com.palantir.conjure.java.undertow.runtime.ConjureHandler;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Set;
 import javax.net.ssl.SSLContext;
@@ -44,13 +46,15 @@ public final class RecipeBookApplication {
         // noop
     }
 
-    public static void main(String[] _args) {
+    public static void main(String[] _args) throws IOException {
+        Configuration conf = ConfigurationLoader.load();
+
         SslConfiguration sslConfig =
                 SslConfiguration.of(Paths.get(TRUSTSTORE_PATH), Paths.get(KEY_STORE_PATH), "changeit");
         SSLContext sslContext = SslSocketFactories.createSslContext(sslConfig);
 
         Undertow server = Undertow.builder()
-                .addHttpsListener(8345, "0.0.0.0", sslContext)
+                .addHttpsListener(conf.getPort(), conf.getHost(), sslContext)
                 .setHandler(Handlers.path()
                         .addPrefixPath(
                                 "api/",

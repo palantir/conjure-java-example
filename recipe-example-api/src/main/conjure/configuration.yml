@@ -1,0 +1,8 @@
+types:
+  definitions:
+    default-package: com.palantir.conjure.examples.recipe
+    objects:
+      Configuration:
+        fields:
+          port: integer
+          host: string
