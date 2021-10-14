@@ -10,4 +10,4 @@ RUN chmod +x /opt/palantir/services/recipe-example-server/bin/recipe-example-ser
 EXPOSE 8345
 
 WORKDIR /opt/palantir/services/recipe-example-server/
-ENTRYPOINT ["./bin/recipe-example-server", "server", "var/conf/recipes.yml"]
+ENTRYPOINT ["./bin/recipe-example-server", "server", "var/conf/conf.yml"]
