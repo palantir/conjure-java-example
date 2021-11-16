@@ -17,16 +17,16 @@
 package com.palantir.conjure.examples.resources;
 
 import com.palantir.conjure.examples.recipe.api.Recipe;
-import com.palantir.conjure.examples.recipe.api.RecipeBookService;
 import com.palantir.conjure.examples.recipe.api.RecipeErrors;
 import com.palantir.conjure.examples.recipe.api.RecipeName;
+import com.palantir.conjure.examples.recipe.api.UndertowRecipeBookService;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public final class RecipeBookResource implements RecipeBookService {
+public final class RecipeBookResource implements UndertowRecipeBookService {
 
     private final Map<RecipeName, Recipe> recipes;
 

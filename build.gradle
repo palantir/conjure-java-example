@@ -1,14 +1,11 @@
 buildscript {
     repositories {
-        repositories {
-            mavenCentral()
-            maven { url 'https://dl.bintray.com/palantir/releases/' }
-            maven { url 'https://plugins.gradle.org/m2/' }
-        }
+        gradlePluginPortal()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.palantir.gradle.externalpublish:gradle-external-publish-plugin:1.2.1'
+        classpath 'com.palantir.gradle.externalpublish:gradle-external-publish-plugin:1.4.0'
         classpath 'com.palantir.javaformat:gradle-palantir-java-format:1.0.1'
         classpath 'com.palantir.gradle.consistentversions:gradle-consistent-versions:1.25.0'
         classpath 'com.palantir.baseline:gradle-baseline-java:2.49.2'
@@ -31,8 +28,8 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven { url 'https://dl.bintray.com/palantir/releases/' }
     }
+
 }
 
 configure(subprojects - project(':recipe-example-api')) {

@@ -20,7 +20,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.io.Resources;
 import com.palantir.conjure.examples.recipe.api.BakeStep;
 import com.palantir.conjure.examples.recipe.api.Ingredient;
 import com.palantir.conjure.examples.recipe.api.Recipe;
@@ -30,60 +29,68 @@ import com.palantir.conjure.examples.recipe.api.RecipeName;
 import com.palantir.conjure.examples.recipe.api.RecipeStep;
 import com.palantir.conjure.examples.recipe.api.Temperature;
 import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
-import com.palantir.conjure.java.api.config.service.ServiceConfiguration;
 import com.palantir.conjure.java.api.config.service.UserAgent;
-import com.palantir.conjure.java.api.config.service.UserAgent.Agent;
-import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
 import com.palantir.conjure.java.api.testing.Assertions;
+import com.palantir.conjure.java.client.config.ClientConfiguration;
 import com.palantir.conjure.java.client.config.ClientConfigurations;
 import com.palantir.conjure.java.client.jaxrs.JaxRsClient;
 import com.palantir.conjure.java.okhttp.NoOpHostEventsSink;
-import io.dropwizard.testing.junit.DropwizardAppRule;
-import java.nio.file.Paths;
-import java.util.Set;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Test;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class RecipeBookApplicationTest {
-    private static final String TRUSTSTORE_PATH = "src/test/resources/trustStore.jks";
-
-    @ClassRule
-    public static final DropwizardAppRule<RecipeBookConfiguration> RULE = new DropwizardAppRule<>(
-            RecipeBookApplication.class, Resources.getResource("test.yml").getPath());
 
     private static RecipeBookService client;
 
-    @BeforeClass
-    public static void before() {
+    @BeforeAll
+    public static void before()
+            throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException,
+                    KeyManagementException {
+
+        File crtFile = new File("src/test/resources/certs/ca-cert");
+        Certificate certificate =
+                CertificateFactory.getInstance("X.509").generateCertificate(new FileInputStream(crtFile));
+        KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+        keyStore.load(null, null);
+        keyStore.setCertificateEntry("server", certificate);
+
+        TrustManagerFactory trustManagerFactory =
+                TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        trustManagerFactory.init(keyStore);
+
+        TrustManager[] trustManager = trustManagerFactory.getTrustManagers();
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(null, trustManager, null);
+
+        ClientConfiguration clientConfig = ClientConfigurations.of(
+                ImmutableList.of("https://localhost:8345/api/"), sslContext.getSocketFactory(), (X509TrustManager)
+                        trustManager[0]);
+
         client = JaxRsClient.create(
                 RecipeBookService.class,
-                UserAgent.of(Agent.of("test", "0.0.0")),
+                UserAgent.of(UserAgent.Agent.of("test", "0.0.0")),
                 NoOpHostEventsSink.INSTANCE,
-                ClientConfigurations.of(ServiceConfiguration.builder()
-                        .addUris(String.format("http://localhost:%d/examples/api/", RULE.getLocalPort()))
-                        .security(SslConfiguration.of(Paths.get(TRUSTSTORE_PATH)))
-                        .build()));
+                clientConfig);
     }
 
     @Test
     public void getRecipeUsingInvalidName() {
         Assertions.assertThatRemoteExceptionThrownBy(() -> client.getRecipe(RecipeName.of("doesNotExist")))
                 .isGeneratedFromErrorType(RecipeErrors.RECIPE_NOT_FOUND);
-    }
-
-    @Test
-    public void getRecipe() {
-        RecipeName recipeName = RecipeName.of("roasted broccoli with garlic");
-        Recipe recipe = client.getRecipe(recipeName);
-        Recipe expectedRecipe = RULE.getConfiguration().getRecipes().stream()
-                .filter(r -> r.getName().equals(recipeName))
-                .findFirst()
-                .get();
-        assertThat(recipe).isEqualTo(expectedRecipe);
-
-        Set<Recipe> recipes = client.getAllRecipes();
-        assertThat(recipes).isEqualTo(RULE.getConfiguration().getRecipes());
     }
 
     @Test
