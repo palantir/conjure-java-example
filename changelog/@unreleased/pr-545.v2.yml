@@ -1,0 +1,5 @@
+type: improvement
+improvement:
+  description: apply https://github.com/palantir/conjure-java-example/pull/536/files
+  links:
+  - https://github.com/palantir/conjure-java-example/pull/545
