@@ -1,7 +1,7 @@
 buildscript {
     repositories {
-        gradlePluginPortal()
-        mavenCentral()
+        mavenCentral() { metadataSources { mavenPom(); ignoreGradleMetadataRedirection() } }
+        gradlePluginPortal() { metadataSources { mavenPom(); ignoreGradleMetadataRedirection() } }
     }
 
     dependencies {
@@ -27,7 +27,7 @@ allprojects {
     version gitVersion()
 
     repositories {
-        mavenCentral()
+        mavenCentral() { metadataSources { mavenPom(); ignoreGradleMetadataRedirection() } }
     }
 
 }
