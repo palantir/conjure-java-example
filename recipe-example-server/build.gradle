@@ -5,25 +5,18 @@ dependencies {
     compileOnly 'org.immutables:value::annotations'
 
     implementation project(':recipe-example-api:recipe-example-api-objects')
-    implementation project(':recipe-example-api:recipe-example-api-jersey')
     implementation project(':recipe-example-api:recipe-example-api-undertow')
 
-    implementation 'com.palantir.conjure.java:conjure-java-undertow-runtime'
-
     implementation 'com.google.guava:guava'
-    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml"
-    implementation 'com.palantir.conjure.java.runtime:conjure-java-jackson-serialization'
-    implementation 'com.palantir.conjure.java.runtime:conjure-java-jersey-server'
-    implementation 'com.palantir.conjure.java.runtime:keystores'
+    implementation 'com.palantir.conjure.java:conjure-java-undertow-runtime'
     implementation 'com.palantir.conjure.java.api:ssl-config'
+    implementation 'com.palantir.conjure.java.runtime:keystores'
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml"
 
-    implementation "org.slf4j:slf4j-simple"
-    implementation 'org.slf4j:slf4j-api'
-
-    testImplementation 'junit:junit'
-    testImplementation 'org.assertj:assertj-core'
-    testImplementation 'com.palantir.conjure.java.runtime:conjure-java-jaxrs-client'
+    testImplementation project(':recipe-example-api:recipe-example-api-jersey')
     testImplementation 'com.palantir.conjure.java.api:test-utils'
+    testImplementation 'com.palantir.conjure.java.runtime:conjure-java-jaxrs-client'
+    testImplementation 'org.assertj:assertj-core'
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
 }

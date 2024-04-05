@@ -37,14 +37,13 @@ configure(subprojects - project(':recipe-example-api')) {
     apply plugin: 'java'
     apply plugin: 'org.inferred.processors'
 
-    sourceCompatibility = 1.8
-
     tasks.withType(JavaCompile) {
         options.compilerArgs += ['-Werror']
     }
+
+    tasks.check.dependsOn checkUnusedDependencies
 }
 
 javaVersions {
     libraryTarget = 17
-    runtime = 21
 }
