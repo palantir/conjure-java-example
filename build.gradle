@@ -22,6 +22,8 @@ apply plugin: 'com.palantir.consistent-versions'
 apply plugin: 'com.palantir.external-publish'
 apply plugin: 'com.palantir.git-version'
 
+version gitVersion()
+
 allprojects {
     apply plugin: 'java-library'
     apply plugin: 'com.palantir.java-format'

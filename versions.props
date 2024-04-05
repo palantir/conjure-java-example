@@ -5,6 +5,7 @@ com.palantir.conjure:conjure = 4.47.0
 com.palantir.conjure.java:* = 8.16.0
 com.palantir.conjure.java.api:test-utils = 2.51.0
 com.palantir.conjure.java.runtime:* = 8.6.0
+com.palantir.conjure.typescript:conjure-typescript = 5.5.0
 org.assertj:assertj-core = 3.25.3
 org.immutables:* = 2.10.1
 org.junit.jupiter:* = 5.10.2
