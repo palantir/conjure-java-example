@@ -17,7 +17,7 @@ dependencies {
     implementation 'com.palantir.conjure.java.runtime:keystores'
     implementation 'com.palantir.conjure.java.api:ssl-config'
 
-    compile "org.slf4j:slf4j-simple"
+    implementation "org.slf4j:slf4j-simple"
     implementation 'org.slf4j:slf4j-api'
 
     testImplementation 'junit:junit'

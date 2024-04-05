@@ -38,9 +38,8 @@ import java.util.Set;
 import javax.net.ssl.SSLContext;
 
 public final class RecipeBookApplication {
-
-    protected static final String KEY_STORE_PATH = "src/test/resources/certs/keystore.jks"; // password changeit
-    protected static final String TRUSTSTORE_PATH = "src/test/resources/certs/truststore.jks"; // password changeit
+    private static final String KEY_STORE_PATH = "src/test/resources/certs/keystore.jks"; // password changeit
+    private static final String TRUSTSTORE_PATH = "src/test/resources/certs/truststore.jks"; // password changeit
 
     private RecipeBookApplication() {
         // noop

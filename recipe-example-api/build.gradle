@@ -18,8 +18,8 @@ apply plugin: 'com.palantir.conjure'
 
 configure(subprojects - project('recipe-example-api-typescript')) {
     dependencies {
-        compile 'com.palantir.conjure.java:conjure-lib'
-        compile 'com.fasterxml.jackson.core:jackson-databind'
+        implementation 'com.palantir.conjure.java:conjure-lib'
+        implementation 'com.fasterxml.jackson.core:jackson-databind'
     }
 }
 
