@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.palantir.conjure.examples.recipe.Configuration;
 import com.palantir.conjure.examples.recipe.api.BakeStep;
 import com.palantir.conjure.examples.recipe.api.Ingredient;
 import com.palantir.conjure.examples.recipe.api.Recipe;
@@ -30,61 +31,53 @@ import com.palantir.conjure.examples.recipe.api.RecipeStep;
 import com.palantir.conjure.examples.recipe.api.Temperature;
 import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
 import com.palantir.conjure.java.api.config.service.UserAgent;
+import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
 import com.palantir.conjure.java.api.testing.Assertions;
 import com.palantir.conjure.java.client.config.ClientConfiguration;
 import com.palantir.conjure.java.client.config.ClientConfigurations;
 import com.palantir.conjure.java.client.jaxrs.JaxRsClient;
+import com.palantir.conjure.java.config.ssl.SslSocketFactories;
 import com.palantir.conjure.java.okhttp.NoOpHostEventsSink;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
+import io.undertow.Undertow;
+import java.nio.file.Paths;
+import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class RecipeBookApplicationTest {
+    private static final Configuration config = Configuration.of(8345, "localhost");
 
+    private static final SslConfiguration TRUST_STORE_CONFIGURATION = new SslConfiguration.Builder()
+            .trustStorePath(Paths.get("src/test/resources/certs/truststore.jks"))
+            .build();
+    private static final SSLSocketFactory SSL_SOCKET_FACTORY =
+            SslSocketFactories.createSslSocketFactory(TRUST_STORE_CONFIGURATION);
+    private static final X509TrustManager TRUST_MANAGER =
+            SslSocketFactories.createX509TrustManager(TRUST_STORE_CONFIGURATION);
+
+    private static Undertow server;
     private static RecipeBookService client;
 
     @BeforeAll
-    public static void before()
-            throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException,
-                    KeyManagementException {
-
-        File crtFile = new File("src/test/resources/certs/ca-cert");
-        Certificate certificate =
-                CertificateFactory.getInstance("X.509").generateCertificate(new FileInputStream(crtFile));
-        KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-        keyStore.load(null, null);
-        keyStore.setCertificateEntry("server", certificate);
-
-        TrustManagerFactory trustManagerFactory =
-                TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-        trustManagerFactory.init(keyStore);
-
-        TrustManager[] trustManager = trustManagerFactory.getTrustManagers();
-        SSLContext sslContext = SSLContext.getInstance("TLS");
-        sslContext.init(null, trustManager, null);
-
-        ClientConfiguration clientConfig = ClientConfigurations.of(
-                ImmutableList.of("https://localhost:8345/api/"), sslContext.getSocketFactory(), (X509TrustManager)
-                        trustManager[0]);
+    public static void before() {
+        server = RecipeBookApplication.setupRecipeApplicationServer(
+                Undertow.builder().addHttpListener(config.getPort(), config.getHost()));
+        server.start();
 
         client = JaxRsClient.create(
                 RecipeBookService.class,
                 UserAgent.of(UserAgent.Agent.of("test", "0.0.0")),
                 NoOpHostEventsSink.INSTANCE,
-                clientConfig);
+                clientConfiguration());
+    }
+
+    @AfterAll
+    public static void after() {
+        if (server != null) {
+            server.stop();
+        }
     }
 
     @Test
@@ -111,5 +104,21 @@ public class RecipeBookApplicationTest {
                                 .durationInSeconds(2700)
                                 .build())));
         assertThat(recipe).isEqualTo(expectedRecipe);
+    }
+
+    private static ClientConfiguration clientConfiguration() {
+        return ClientConfiguration.builder()
+                .from(ClientConfigurations.of(
+                        ImmutableList.of("http://" + config.getHost() + ":" + config.getPort() + "/api"),
+                        SSL_SOCKET_FACTORY,
+                        TRUST_MANAGER))
+                // Disable retries to avoid spinning unnecessarily on negative tests
+                .maxNumRetries(0)
+                .userAgent(clientUserAgent())
+                .build();
+    }
+
+    private static UserAgent clientUserAgent() {
+        return UserAgent.of(UserAgent.Agent.of("test", "develop"));
     }
 }
