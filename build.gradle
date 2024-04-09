@@ -29,6 +29,7 @@ allprojects {
     apply plugin: 'com.palantir.java-format'
 
     version rootProject.version
+    group 'com.palantir.conjure.examples'
 
     repositories {
         mavenCentral()
