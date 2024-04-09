@@ -5,40 +5,48 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.palantir.gradle.externalpublish:gradle-external-publish-plugin:1.11.0'
-        classpath 'com.palantir.javaformat:gradle-palantir-java-format:1.0.1'
-        classpath 'com.palantir.gradle.consistentversions:gradle-consistent-versions:1.25.0'
-        classpath 'com.palantir.baseline:gradle-baseline-java:2.49.2'
-        classpath 'com.palantir.gradle.conjure:gradle-conjure:4.27.0'
-        classpath 'com.palantir.gradle.gitversion:gradle-git-version:0.12.3'
-        classpath 'com.palantir.launchconfig:gradle-launch-config-plugin:1.2.0'
+        classpath 'com.palantir.baseline:gradle-baseline-java:5.49.0'
+        classpath 'com.palantir.gradle.conjure:gradle-conjure:5.45.0'
+        classpath 'com.palantir.gradle.consistentversions:gradle-consistent-versions:2.22.0'
+        classpath 'com.palantir.gradle.externalpublish:gradle-external-publish-plugin:1.15.0'
+        classpath 'com.palantir.gradle.gitversion:gradle-git-version:3.0.0'
+        classpath 'com.palantir.javaformat:gradle-palantir-java-format:2.41.0'
+        classpath 'com.palantir.launchconfig:gradle-launch-config-plugin:1.5.0'
         classpath 'gradle.plugin.org.inferred:gradle-processors:3.7.0'
     }
 }
 
-apply plugin: 'com.palantir.external-publish'
-apply plugin: 'com.palantir.consistent-versions'
 apply plugin: 'com.palantir.baseline'
+apply plugin: 'com.palantir.baseline-java-versions'
+apply plugin: 'com.palantir.consistent-versions'
+apply plugin: 'com.palantir.external-publish'
 apply plugin: 'com.palantir.git-version'
 
+version gitVersion()
+
 allprojects {
+    apply plugin: 'java-library'
     apply plugin: 'com.palantir.java-format'
+
+    version rootProject.version
     group 'com.palantir.conjure.examples'
-    version gitVersion()
 
     repositories {
         mavenCentral()
     }
-
 }
 
 configure(subprojects - project(':recipe-example-api')) {
     apply plugin: 'java'
     apply plugin: 'org.inferred.processors'
 
-    sourceCompatibility = 1.8
-
     tasks.withType(JavaCompile) {
         options.compilerArgs += ['-Werror']
     }
+
+    tasks.check.dependsOn checkUnusedDependencies
+}
+
+javaVersions {
+    libraryTarget = 17
 }

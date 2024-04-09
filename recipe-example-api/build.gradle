@@ -16,19 +16,6 @@
 
 apply plugin: 'com.palantir.conjure'
 
-configure(subprojects - project('recipe-example-api-typescript')) {
-    dependencies {
-        compile 'com.palantir.conjure.java:conjure-lib'
-        compile 'com.fasterxml.jackson.core:jackson-databind'
-    }
-}
-
-project (':recipe-example-api:recipe-example-api-typescript') {
-    publishTypeScript.doFirst {
-        file('src/.npmrc') << "//registry.npmjs.org/:_authToken=${System.env.NPM_AUTH_TOKEN}"
-    }
-}
-
 // optional, only needed if you want to override the default settings
 conjure {
     typescript {
@@ -36,6 +23,15 @@ conjure {
     }
 
     java {
+        excludeEmptyOptionals = true
+        nonNullCollections = true
+        strictObjects = true
+        useImmutableBytes = true
+        useStagedBuilders = true
         undertowServicePrefixes = true
     }
+}
+
+project (':recipe-example-api:recipe-example-api-typescript') {
+    generateNpmrc.token = System.env.NPM_AUTH_TOKEN
 }
