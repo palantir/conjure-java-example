@@ -56,4 +56,5 @@ configure(subprojects - project(':recipe-example-api')) {
 
 javaVersions {
     libraryTarget = 17
+    runtime = 21
 }
