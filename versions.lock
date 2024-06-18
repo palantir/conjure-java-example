@@ -1,4 +1,4 @@
-# Run ./gradlew writeVersionsLock to regenerate this file
+# Run ./gradlew writeVersionsLocks to regenerate this file
 com.fasterxml.jackson:jackson-bom:2.16.1 (10 constraints: 8ad88c95)
 com.fasterxml.jackson.core:jackson-annotations:2.16.1 (10 constraints: 15b7de6b)
 com.fasterxml.jackson.core:jackson-core:2.16.1 (14 constraints: f12ececc)
@@ -17,8 +17,8 @@ com.google.guava:failureaccess:1.0.2 (1 constraints: 150ae2b4)
 com.google.guava:guava:33.2.1-jre (24 constraints: e4d737f2)
 com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 constraints: bd17c918)
 com.palantir.conjure.java:conjure-java-undertow-runtime:8.23.0 (1 constraints: 3f05603b)
-com.palantir.conjure.java:conjure-lib:8.23.0 (5 constraints: 8f50ff32)
-com.palantir.conjure.java:conjure-undertow-lib:8.23.0 (2 constraints: a41cabc7)
+com.palantir.conjure.java:conjure-lib:8.23.0 (5 constraints: 8e502632)
+com.palantir.conjure.java:conjure-undertow-lib:8.23.0 (2 constraints: a31c67c7)
 com.palantir.conjure.java.api:errors:2.53.0 (6 constraints: e47aa4fe)
 com.palantir.conjure.java.api:ssl-config:2.53.0 (3 constraints: c1395f07)
 com.palantir.conjure.java.runtime:conjure-java-jackson-optimizations:8.12.0 (1 constraints: 811cbaa4)
