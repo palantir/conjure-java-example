@@ -8,5 +8,5 @@ com.palantir.conjure.java.runtime:* = 8.15.0
 com.palantir.conjure.typescript:conjure-typescript = 5.5.0
 org.assertj:assertj-core = 3.26.3
 org.immutables:* = 2.10.1
-org.junit.jupiter:* = 5.11.1
+org.junit.jupiter:* = 5.11.2
 org.slf4j:* = 1.7.36
