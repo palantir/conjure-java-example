@@ -34,6 +34,7 @@ public final class RecipeBookResource implements UndertowRecipeBookService {
         this.recipes = recipes.stream().collect(Collectors.toConcurrentMap(Recipe::getName, Function.identity()));
     }
 
+    @SuppressWarnings("for-rollout:UnnecessarilyFullyQualified")
     @Override
     public Recipe getRecipe(RecipeName name) {
         com.palantir.logsafe.Preconditions.checkNotNull(name, "Recipe name must be provided.");
