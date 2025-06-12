@@ -27,7 +27,6 @@ import com.palantir.conjure.examples.recipe.api.TemperatureUnit;
 import java.util.Set;
 
 public final class ExampleRecipes {
-    @SuppressWarnings("for-rollout:PreferredInterfaceType")
     public static Set<Recipe> getCommonRecipes() {
         return ImmutableSet.of(
                 Recipe.builder()
