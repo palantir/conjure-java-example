@@ -40,7 +40,7 @@ com.palantir.conjure.java:conjure-lib:8.55.0 (6 constraints: 236de4fd)
 
 com.palantir.conjure.java:conjure-undertow-lib:8.55.0 (2 constraints: a81c79c7)
 
-com.palantir.conjure.java.api:errors:2.64.0 (8 constraints: 9c9a2633)
+com.palantir.conjure.java.api:errors:2.65.0 (8 constraints: 9d9a3f34)
 
 com.palantir.conjure.java.api:ssl-config:2.62.0 (3 constraints: c1396207)
 
@@ -150,7 +150,7 @@ com.netflix.feign:feign-jackson:8.18.0 (1 constraints: c718909e)
 
 com.palantir.conjure.java.api:service-config:2.62.0 (4 constraints: 43503d1a)
 
-com.palantir.conjure.java.api:test-utils:2.64.0 (1 constraints: 3e054f3b)
+com.palantir.conjure.java.api:test-utils:2.65.0 (1 constraints: 3f05523b)
 
 com.palantir.conjure.java.runtime:client-config:8.24.0 (4 constraints: b555c019)
 
