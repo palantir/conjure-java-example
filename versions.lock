@@ -24,15 +24,15 @@ com.github.ben-manes.caffeine:caffeine:3.2.2 (5 constraints: 6263a6aa)
 
 com.google.code.findbugs:jsr305:3.0.2 (13 constraints: 320a6f07)
 
-com.google.errorprone:error_prone_annotations:2.40.0 (25 constraints: 78b73fc1)
+com.google.errorprone:error_prone_annotations:2.41.0 (25 constraints: 74b7e0ae)
 
 com.google.guava:failureaccess:1.0.3 (1 constraints: 160ae3b4)
 
-com.google.guava:guava:33.4.8-jre (25 constraints: c3ed5f8e)
+com.google.guava:guava:33.5.0-jre (25 constraints: bced9068)
 
 com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 constraints: bd17c918)
 
-com.google.j2objc:j2objc-annotations:3.0.0 (1 constraints: 150aeab4)
+com.google.j2objc:j2objc-annotations:3.1 (1 constraints: b809f1a0)
 
 com.palantir.conjure.java:conjure-java-undertow-runtime:8.55.0 (1 constraints: 4405723b)
 
