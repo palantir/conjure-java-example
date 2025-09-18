@@ -178,7 +178,7 @@ com.palantir.refreshable:refreshable:2.7.0 (2 constraints: 2523f645)
 
 com.palantir.safethreadlocalrandom:safe-thread-local-random:0.3.0 (1 constraints: 350faa76)
 
-net.bytebuddy:byte-buddy:1.17.6 (2 constraints: c716ff4f)
+net.bytebuddy:byte-buddy:1.17.7 (2 constraints: 9e161a3f)
 
 org.apache.httpcomponents.client5:httpclient5:5.3.1 (1 constraints: cd13996e)
 
@@ -188,7 +188,7 @@ org.apache.httpcomponents.core5:httpcore5-h2:5.2.4 (1 constraints: 3f130d3c)
 
 org.apiguardian:apiguardian-api:1.1.2 (6 constraints: 5366ce6e)
 
-org.assertj:assertj-core:3.27.4 (2 constraints: 9516dd22)
+org.assertj:assertj-core:3.27.5 (2 constraints: 96161023)
 
 org.junit.jupiter:junit-jupiter:5.13.4 (1 constraints: 7e074077)
 
