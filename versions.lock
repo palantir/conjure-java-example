@@ -24,7 +24,7 @@ com.github.ben-manes.caffeine:caffeine:3.2.2 (5 constraints: 6263a6aa)
 
 com.google.code.findbugs:jsr305:3.0.2 (13 constraints: 320a6f07)
 
-com.google.errorprone:error_prone_annotations:2.41.0 (25 constraints: 71b734ac)
+com.google.errorprone:error_prone_annotations:2.41.0 (25 constraints: 6bb7119d)
 
 com.google.guava:failureaccess:1.0.3 (1 constraints: 160ae3b4)
 
@@ -34,11 +34,11 @@ com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 c
 
 com.google.j2objc:j2objc-annotations:3.1 (1 constraints: b809f1a0)
 
-com.palantir.conjure.java:conjure-java-undertow-runtime:8.56.0 (1 constraints: 4505753b)
+com.palantir.conjure.java:conjure-java-undertow-runtime:8.57.0 (1 constraints: 4605783b)
 
-com.palantir.conjure.java:conjure-lib:8.56.0 (6 constraints: 2e6d4601)
+com.palantir.conjure.java:conjure-lib:8.57.0 (6 constraints: 306dda02)
 
-com.palantir.conjure.java:conjure-undertow-lib:8.56.0 (2 constraints: a91c7cc7)
+com.palantir.conjure.java:conjure-undertow-lib:8.57.0 (2 constraints: aa1c7fc7)
 
 com.palantir.conjure.java.api:errors:2.65.0 (9 constraints: ceae8739)
 
@@ -46,11 +46,11 @@ com.palantir.conjure.java.api:ssl-config:2.65.0 (3 constraints: ca396609)
 
 com.palantir.conjure.java.runtime:conjure-java-jackson-optimizations:8.25.0 (1 constraints: 851cc7a4)
 
-com.palantir.conjure.java.runtime:conjure-java-jackson-serialization:8.25.0 (3 constraints: 04409965)
+com.palantir.conjure.java.runtime:conjure-java-jackson-serialization:8.25.0 (3 constraints: 05400f66)
 
 com.palantir.conjure.java.runtime:keystores:8.25.0 (2 constraints: 6119b3dd)
 
-com.palantir.deadlines:deadlines:0.15.0 (2 constraints: c6262ad9)
+com.palantir.deadlines:deadlines:0.16.0 (2 constraints: c7265ad9)
 
 com.palantir.nylon:nylon-threads:0.4.0 (1 constraints: 0c10fa91)
 
@@ -68,23 +68,23 @@ com.palantir.safe-logging:safe-logging:3.9.0 (25 constraints: 69bfc43c)
 
 com.palantir.tokens:auth-tokens:3.19.0 (6 constraints: 3a6e0977)
 
-com.palantir.tracing:tracing:6.28.0 (7 constraints: 0f7e279d)
+com.palantir.tracing:tracing:6.28.0 (7 constraints: 137e2ba1)
 
 com.palantir.tracing:tracing-api:6.28.0 (5 constraints: 2e5887dc)
 
 com.palantir.tracing:tracing-undertow:6.28.0 (1 constraints: 69178137)
 
-com.palantir.tritium:tritium-api:0.105.0 (2 constraints: 8d1fabf3)
+com.palantir.tritium:tritium-api:0.109.0 (2 constraints: 951f7ff4)
 
-com.palantir.tritium:tritium-core:0.105.0 (1 constraints: 6e10a6b2)
+com.palantir.tritium:tritium-core:0.109.0 (1 constraints: 7210b2b2)
 
 com.palantir.tritium:tritium-ids:0.104.0 (1 constraints: f80f86a6)
 
-com.palantir.tritium:tritium-metrics:0.105.0 (4 constraints: ed467974)
+com.palantir.tritium:tritium-metrics:0.109.0 (4 constraints: f4460a79)
 
-com.palantir.tritium:tritium-registry:0.109.0 (9 constraints: 44b1a164)
+com.palantir.tritium:tritium-registry:0.109.0 (9 constraints: 4fb1d06b)
 
-io.dropwizard.metrics:metrics-core:4.2.37 (8 constraints: a6a1d1e9)
+io.dropwizard.metrics:metrics-core:4.2.37 (8 constraints: aba115ed)
 
 io.smallrye.common:smallrye-common-constraint:2.4.0 (3 constraints: c633ce60)
 
