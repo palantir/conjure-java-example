@@ -34,11 +34,11 @@ com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 c
 
 com.google.j2objc:j2objc-annotations:3.1 (1 constraints: b809f1a0)
 
-com.palantir.conjure.java:conjure-java-undertow-runtime:8.57.0 (1 constraints: 4605783b)
+com.palantir.conjure.java:conjure-java-undertow-runtime:8.58.0 (1 constraints: 47057b3b)
 
-com.palantir.conjure.java:conjure-lib:8.57.0 (6 constraints: 306dda02)
+com.palantir.conjure.java:conjure-lib:8.58.0 (6 constraints: 326d6e04)
 
-com.palantir.conjure.java:conjure-undertow-lib:8.57.0 (2 constraints: aa1c7fc7)
+com.palantir.conjure.java:conjure-undertow-lib:8.58.0 (2 constraints: ab1c82c7)
 
 com.palantir.conjure.java.api:errors:2.65.0 (9 constraints: ceae8739)
 
