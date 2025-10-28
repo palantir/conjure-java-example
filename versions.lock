@@ -1,10 +1,10 @@
 # Run ./gradlew writeVersionsLocks to regenerate this file. Blank lines are to minimize merge conflicts.
 
-com.fasterxml.jackson.core:jackson-annotations:2.20 (12 constraints: bfd91271)
+com.fasterxml.jackson.core:jackson-annotations:2.20 (12 constraints: 87d8a0fc)
 
-com.fasterxml.jackson.core:jackson-core:2.20.0 (13 constraints: 1820448f)
+com.fasterxml.jackson.core:jackson-core:2.20.0 (13 constraints: 0420287e)
 
-com.fasterxml.jackson.core:jackson-databind:2.20.0 (18 constraints: b8794cb4)
+com.fasterxml.jackson.core:jackson-databind:2.20.0 (18 constraints: 9a79278e)
 
 com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.20.0 (2 constraints: 4735e5f2)
 
@@ -34,11 +34,11 @@ com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 c
 
 com.google.j2objc:j2objc-annotations:3.1 (1 constraints: b809f1a0)
 
-com.palantir.conjure.java:conjure-java-undertow-runtime:8.58.0 (1 constraints: 47057b3b)
+com.palantir.conjure.java:conjure-java-undertow-runtime:8.59.0 (1 constraints: 48057e3b)
 
-com.palantir.conjure.java:conjure-lib:8.58.0 (6 constraints: 326d6e04)
+com.palantir.conjure.java:conjure-lib:8.59.0 (6 constraints: 346d0206)
 
-com.palantir.conjure.java:conjure-undertow-lib:8.58.0 (2 constraints: ab1c82c7)
+com.palantir.conjure.java:conjure-undertow-lib:8.59.0 (2 constraints: ac1c85c7)
 
 com.palantir.conjure.java.api:errors:2.65.0 (9 constraints: ceae8739)
 
@@ -66,7 +66,7 @@ com.palantir.safe-logging:preconditions:3.9.0 (27 constraints: 7bd54d10)
 
 com.palantir.safe-logging:safe-logging:3.9.0 (25 constraints: 69bfc43c)
 
-com.palantir.tokens:auth-tokens:3.19.0 (6 constraints: 3a6e0977)
+com.palantir.tokens:auth-tokens:3.20.0 (6 constraints: 226e0464)
 
 com.palantir.tracing:tracing:6.28.0 (7 constraints: 137e2ba1)
 
@@ -100,7 +100,7 @@ io.smallrye.common:smallrye-common-os:2.4.0 (1 constraints: b10e835a)
 
 io.smallrye.common:smallrye-common-ref:2.4.0 (1 constraints: b10e835a)
 
-io.undertow:undertow-core:2.2.38.Final (3 constraints: f2411bbe)
+io.undertow:undertow-core:2.2.38.Final (3 constraints: f441d1be)
 
 javax.annotation:javax.annotation-api:1.3.2 (1 constraints: 0805fb35)
 
