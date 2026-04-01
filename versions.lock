@@ -40,7 +40,7 @@ com.palantir.conjure.java:conjure-lib:8.75.0 (6 constraints: 336d7903)
 
 com.palantir.conjure.java:conjure-undertow-lib:8.75.0 (2 constraints: aa1c81c7)
 
-com.palantir.conjure.java.api:errors:2.70.0 (9 constraints: aaae301b)
+com.palantir.conjure.java.api:errors:2.71.0 (9 constraints: abae821c)
 
 com.palantir.conjure.java.api:ssl-config:2.70.0 (3 constraints: be39b906)
 
@@ -56,15 +56,15 @@ com.palantir.nylon:nylon-threads:0.7.0 (1 constraints: 0f100392)
 
 com.palantir.ri:resource-identifier:2.14.0 (5 constraints: 595baae4)
 
-com.palantir.safe-logging:logger:3.13.0 (21 constraints: 117e4d92)
+com.palantir.safe-logging:logger:3.13.0 (21 constraints: 127e7e92)
 
 com.palantir.safe-logging:logger-slf4j:3.13.0 (1 constraints: 320e9050)
 
 com.palantir.safe-logging:logger-spi:3.13.0 (2 constraints: 731e76b0)
 
-com.palantir.safe-logging:preconditions:3.13.0 (27 constraints: f3d93605)
+com.palantir.safe-logging:preconditions:3.13.0 (27 constraints: f5d90f0a)
 
-com.palantir.safe-logging:safe-logging:3.13.0 (25 constraints: 91c3e7dd)
+com.palantir.safe-logging:safe-logging:3.13.0 (25 constraints: 92c31ee2)
 
 com.palantir.tokens:auth-tokens:4.2.0 (6 constraints: 206d5da5)
 
@@ -78,7 +78,7 @@ com.palantir.tritium:tritium-api:0.125.0 (2 constraints: 911f19f4)
 
 com.palantir.tritium:tritium-core:0.125.0 (1 constraints: 7010aeb2)
 
-com.palantir.tritium:tritium-ids:0.125.0 (1 constraints: fb0f91a6)
+com.palantir.tritium:tritium-ids:0.126.0 (1 constraints: fc0f94a6)
 
 com.palantir.tritium:tritium-metrics:0.125.0 (4 constraints: f8460479)
 
@@ -152,7 +152,7 @@ com.netflix.feign:feign-jackson:8.18.0 (1 constraints: c718909e)
 
 com.palantir.conjure.java.api:service-config:2.70.0 (4 constraints: 3f50f518)
 
-com.palantir.conjure.java.api:test-utils:2.70.0 (1 constraints: 3b05473b)
+com.palantir.conjure.java.api:test-utils:2.71.0 (1 constraints: 3c054a3b)
 
 com.palantir.conjure.java.runtime:client-config:8.33.0 (4 constraints: b555c419)
 
@@ -208,7 +208,7 @@ org.junit.platform:junit-platform-launcher:6.0.3 (1 constraints: 0b050c36)
 
 org.jvnet:animal-sniffer-annotation:1.0 (1 constraints: f20b95eb)
 
-org.mockito:mockito-core:5.22.0 (1 constraints: 4d11b4e0)
+org.mockito:mockito-core:5.23.0 (1 constraints: 4e11b7e0)
 
 org.objenesis:objenesis:3.3 (1 constraints: b20a14bd)
 
