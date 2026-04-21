@@ -24,21 +24,21 @@ com.github.ben-manes.caffeine:caffeine:3.2.3 (5 constraints: 676391ac)
 
 com.google.code.findbugs:jsr305:3.0.2 (13 constraints: 320a6f07)
 
-com.google.errorprone:error_prone_annotations:2.47.0 (25 constraints: 15b9ee93)
+com.google.errorprone:error_prone_annotations:2.47.0 (25 constraints: 21b916c6)
 
 com.google.guava:failureaccess:1.0.3 (1 constraints: 160ae3b4)
 
-com.google.guava:guava:33.6.0-jre (25 constraints: 1ced44fc)
+com.google.guava:guava:33.6.0-jre (25 constraints: 1eeddd05)
 
 com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 constraints: bd17c918)
 
 com.google.j2objc:j2objc-annotations:3.1 (1 constraints: b809f1a0)
 
-com.palantir.conjure.java:conjure-java-undertow-runtime:8.76.0 (1 constraints: 47057d3b)
+com.palantir.conjure.java:conjure-java-undertow-runtime:8.77.0 (1 constraints: 4805803b)
 
-com.palantir.conjure.java:conjure-lib:8.76.0 (6 constraints: 356d0d05)
+com.palantir.conjure.java:conjure-lib:8.77.0 (6 constraints: 376da106)
 
-com.palantir.conjure.java:conjure-undertow-lib:8.76.0 (2 constraints: ab1c84c7)
+com.palantir.conjure.java:conjure-undertow-lib:8.77.0 (2 constraints: ac1c87c7)
 
 com.palantir.conjure.java.api:errors:2.71.0 (9 constraints: adaeb91f)
 
@@ -56,17 +56,17 @@ com.palantir.nylon:nylon-threads:0.8.0 (1 constraints: 10100692)
 
 com.palantir.ri:resource-identifier:2.15.0 (5 constraints: 5c5b69e6)
 
-com.palantir.safe-logging:logger:3.13.0 (21 constraints: 187ea497)
+com.palantir.safe-logging:logger:3.14.0 (21 constraints: 1a7e829c)
 
-com.palantir.safe-logging:logger-slf4j:3.13.0 (1 constraints: 320e9050)
+com.palantir.safe-logging:logger-slf4j:3.14.0 (1 constraints: 330e9350)
 
-com.palantir.safe-logging:logger-spi:3.13.0 (2 constraints: 731e76b0)
+com.palantir.safe-logging:logger-spi:3.14.0 (2 constraints: 751eacb0)
 
-com.palantir.safe-logging:preconditions:3.13.0 (27 constraints: fcd90b12)
+com.palantir.safe-logging:preconditions:3.14.0 (27 constraints: 00daa921)
 
-com.palantir.safe-logging:safe-logging:3.13.0 (25 constraints: 98c36be8)
+com.palantir.safe-logging:safe-logging:3.14.0 (25 constraints: 9ec3dcf8)
 
-com.palantir.tokens:auth-tokens:4.2.0 (6 constraints: 206d5da5)
+com.palantir.tokens:auth-tokens:4.3.0 (6 constraints: 236db5a7)
 
 com.palantir.tracing:tracing:6.33.0 (7 constraints: f67ddd8f)
 
