@@ -28,7 +28,7 @@ com.google.errorprone:error_prone_annotations:2.47.0 (25 constraints: 49b9c52c)
 
 com.google.guava:failureaccess:1.0.3 (1 constraints: 160ae3b4)
 
-com.google.guava:guava:33.6.0-jre (25 constraints: 2aed7e24)
+com.google.guava:guava:33.6.0-jre (25 constraints: 2bedea24)
 
 com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 constraints: bd17c918)
 
@@ -40,7 +40,7 @@ com.palantir.conjure.java:conjure-lib:8.77.0 (6 constraints: 3d6dcb07)
 
 com.palantir.conjure.java:conjure-undertow-lib:8.77.0 (2 constraints: ac1c87c7)
 
-com.palantir.conjure.java.api:errors:2.71.0 (9 constraints: b3aec822)
+com.palantir.conjure.java.api:errors:2.72.0 (9 constraints: b4ae1a24)
 
 com.palantir.conjure.java.api:ssl-config:2.71.0 (3 constraints: c1396507)
 
@@ -56,15 +56,15 @@ com.palantir.nylon:nylon-threads:0.8.0 (1 constraints: 10100692)
 
 com.palantir.ri:resource-identifier:2.15.0 (5 constraints: 5e5b9ee6)
 
-com.palantir.safe-logging:logger:3.14.0 (21 constraints: 2b7ebdc1)
+com.palantir.safe-logging:logger:3.14.0 (21 constraints: 2c7eeec1)
 
 com.palantir.safe-logging:logger-slf4j:3.14.0 (1 constraints: 330e9350)
 
 com.palantir.safe-logging:logger-spi:3.14.0 (2 constraints: 751eacb0)
 
-com.palantir.safe-logging:preconditions:3.14.0 (27 constraints: 13da4253)
+com.palantir.safe-logging:preconditions:3.14.0 (27 constraints: 15da1b58)
 
-com.palantir.safe-logging:safe-logging:3.14.0 (25 constraints: aec36820)
+com.palantir.safe-logging:safe-logging:3.14.0 (25 constraints: afc39f24)
 
 com.palantir.tokens:auth-tokens:4.3.0 (6 constraints: f86c7449)
 
@@ -78,7 +78,7 @@ com.palantir.tritium:tritium-api:0.126.0 (2 constraints: 931f4ef4)
 
 com.palantir.tritium:tritium-core:0.126.0 (1 constraints: 7110b1b2)
 
-com.palantir.tritium:tritium-ids:0.126.0 (1 constraints: fc0f94a6)
+com.palantir.tritium:tritium-ids:0.127.0 (1 constraints: fd0f97a6)
 
 com.palantir.tritium:tritium-metrics:0.126.0 (4 constraints: fc464b7a)
 
@@ -152,7 +152,7 @@ com.netflix.feign:feign-jackson:8.18.0 (1 constraints: c718909e)
 
 com.palantir.conjure.java.api:service-config:2.71.0 (4 constraints: 4350411a)
 
-com.palantir.conjure.java.api:test-utils:2.71.0 (1 constraints: 3c054a3b)
+com.palantir.conjure.java.api:test-utils:2.72.0 (1 constraints: 3d054d3b)
 
 com.palantir.conjure.java.runtime:client-config:8.34.0 (4 constraints: b955121b)
 
