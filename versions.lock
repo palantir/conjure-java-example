@@ -4,7 +4,7 @@ com.fasterxml.jackson.core:jackson-annotations:2.21 (12 constraints: f5d6a0c9)
 
 com.fasterxml.jackson.core:jackson-core:2.21.4 (13 constraints: 2420f1d5)
 
-com.fasterxml.jackson.core:jackson-databind:2.21.4 (18 constraints: 9d79d2e6)
+com.fasterxml.jackson.core:jackson-databind:2.21.4 (18 constraints: a079b2eb)
 
 com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.21.4 (2 constraints: 3d3568f1)
 
@@ -40,7 +40,7 @@ com.palantir.conjure.java:conjure-lib:8.80.0 (6 constraints: 2f6d71fc)
 
 com.palantir.conjure.java:conjure-undertow-lib:8.80.0 (2 constraints: a61c76c7)
 
-com.palantir.conjure.java.api:errors:2.73.0 (9 constraints: c5aef831)
+com.palantir.conjure.java.api:errors:2.74.0 (9 constraints: c6ae4a33)
 
 com.palantir.conjure.java.api:ssl-config:2.73.0 (3 constraints: c739bd08)
 
@@ -62,9 +62,9 @@ com.palantir.safe-logging:logger-slf4j:3.16.0 (1 constraints: 350e9950)
 
 com.palantir.safe-logging:logger-spi:3.16.0 (2 constraints: 791e18b1)
 
-com.palantir.safe-logging:preconditions:3.16.0 (27 constraints: 43da49c9)
+com.palantir.safe-logging:preconditions:3.16.0 (27 constraints: 44dac2cd)
 
-com.palantir.safe-logging:safe-logging:3.16.0 (25 constraints: dcc3ac89)
+com.palantir.safe-logging:safe-logging:3.16.0 (25 constraints: ddc3e38d)
 
 com.palantir.tokens:auth-tokens:4.5.0 (6 constraints: 056da04f)
 
@@ -152,7 +152,7 @@ com.netflix.feign:feign-jackson:8.18.0 (1 constraints: c718909e)
 
 com.palantir.conjure.java.api:service-config:2.73.0 (4 constraints: 4b50d91c)
 
-com.palantir.conjure.java.api:test-utils:2.73.0 (1 constraints: 3e05503b)
+com.palantir.conjure.java.api:test-utils:2.74.0 (1 constraints: 3f05533b)
 
 com.palantir.conjure.java.runtime:client-config:8.37.0 (4 constraints: c355c91e)
 
