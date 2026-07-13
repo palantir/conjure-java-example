@@ -10,6 +10,6 @@ com.palantir.conjure.typescript:conjure-typescript = 5.18.0
 io.undertow:* = 2.2.38.Final
 org.assertj:assertj-core = 3.27.7
 org.immutables:* = 2.12.2
-org.junit.jupiter:* = 6.1.1
+org.junit.jupiter:* = 6.1.2
 org.junit.platform:* = 6.1.1
 org.slf4j:* = 2.0.17
