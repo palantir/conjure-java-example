@@ -21,5 +21,5 @@ dependencies {
 
 }
 
-mainClassName = 'com.palantir.conjure.examples.RecipeBookApplication'
+application.mainClass = 'com.palantir.conjure.examples.RecipeBookApplication'
 
