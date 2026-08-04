@@ -1,24 +1,24 @@
 # Run ./gradlew writeVersionsLocks to regenerate this file. Blank lines are to minimize merge conflicts.
 
-com.fasterxml.jackson.core:jackson-annotations:2.21 (13 constraints: 11f3fcf5)
+com.fasterxml.jackson.core:jackson-annotations:2.22 (13 constraints: 17f3dd00)
 
-com.fasterxml.jackson.core:jackson-core:2.21.4 (13 constraints: 2720f4d5)
+com.fasterxml.jackson.core:jackson-core:2.22.1 (13 constraints: 13209ab1)
 
-com.fasterxml.jackson.core:jackson-databind:2.21.4 (18 constraints: a9797df0)
+com.fasterxml.jackson.core:jackson-databind:2.22.1 (18 constraints: 977901bd)
 
-com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.21.4 (2 constraints: 3d3568f1)
+com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.22.1 (2 constraints: 3d3568f1)
 
-com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.21.4 (1 constraints: 7f1c9ba4)
+com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.22.1 (1 constraints: 7f1c9ba4)
 
-com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.21.4 (1 constraints: 3b053a3b)
+com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.22.1 (1 constraints: 3b053a3b)
 
-com.fasterxml.jackson.datatype:jackson-datatype-guava:2.21.4 (1 constraints: 7f1c9ba4)
+com.fasterxml.jackson.datatype:jackson-datatype-guava:2.22.1 (1 constraints: 7f1c9ba4)
 
-com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.21.4 (1 constraints: 7f1c9ba4)
+com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.22.1 (1 constraints: 7f1c9ba4)
 
-com.fasterxml.jackson.datatype:jackson-datatype-joda:2.21.4 (1 constraints: 7f1c9ba4)
+com.fasterxml.jackson.datatype:jackson-datatype-joda:2.22.1 (1 constraints: 7f1c9ba4)
 
-com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.21.4 (1 constraints: 7f1c9ba4)
+com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.22.1 (1 constraints: 7f1c9ba4)
 
 com.github.ben-manes.caffeine:caffeine:3.2.4 (5 constraints: 6c637cae)
 
@@ -34,11 +34,11 @@ com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 c
 
 com.google.j2objc:j2objc-annotations:3.1 (1 constraints: b809f1a0)
 
-com.palantir.conjure.java:conjure-java-undertow-runtime:8.83.0 (1 constraints: 4505783b)
+com.palantir.conjure.java:conjure-java-undertow-runtime:8.84.0 (1 constraints: 46057b3b)
 
-com.palantir.conjure.java:conjure-lib:8.83.0 (6 constraints: 296d8b00)
+com.palantir.conjure.java:conjure-lib:8.84.0 (6 constraints: 2b6d1f02)
 
-com.palantir.conjure.java:conjure-undertow-lib:8.83.0 (2 constraints: a91c7fc7)
+com.palantir.conjure.java:conjure-undertow-lib:8.84.0 (2 constraints: aa1c82c7)
 
 com.palantir.conjure.java.api:errors:2.76.0 (9 constraints: daae9647)
 
