@@ -4,7 +4,7 @@ com.fasterxml.jackson.core:jackson-annotations:2.22 (13 constraints: 18f37403)
 
 com.fasterxml.jackson.core:jackson-core:2.22.1 (13 constraints: 13209ab1)
 
-com.fasterxml.jackson.core:jackson-databind:2.22.1 (18 constraints: 977901bd)
+com.fasterxml.jackson.core:jackson-databind:2.22.1 (18 constraints: 9579c3b9)
 
 com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.22.1 (2 constraints: 3d3568f1)
 
@@ -40,7 +40,7 @@ com.palantir.conjure.java:conjure-lib:8.84.0 (6 constraints: 2b6d1f02)
 
 com.palantir.conjure.java:conjure-undertow-lib:8.84.0 (2 constraints: aa1c82c7)
 
-com.palantir.conjure.java.api:errors:2.76.0 (9 constraints: daae9647)
+com.palantir.conjure.java.api:errors:2.77.0 (9 constraints: dbaee848)
 
 com.palantir.conjure.java.api:ssl-config:2.76.0 (3 constraints: d039c10a)
 
@@ -152,7 +152,7 @@ com.netflix.feign:feign-jackson:8.18.0 (1 constraints: c718909e)
 
 com.palantir.conjure.java.api:service-config:2.76.0 (4 constraints: 53505720)
 
-com.palantir.conjure.java.api:test-utils:2.76.0 (1 constraints: 4105593b)
+com.palantir.conjure.java.api:test-utils:2.77.0 (1 constraints: 42055c3b)
 
 com.palantir.conjure.java.runtime:client-config:8.39.0 (4 constraints: cd559821)
 
