@@ -24,11 +24,11 @@ com.github.ben-manes.caffeine:caffeine:3.2.4 (5 constraints: 6c637cae)
 
 com.google.code.findbugs:jsr305:3.0.2 (13 constraints: 320a6f07)
 
-com.google.errorprone:error_prone_annotations:2.49.0 (25 constraints: 87b999ab)
+com.google.errorprone:error_prone_annotations:2.50.0 (25 constraints: 81b9d48f)
 
 com.google.guava:failureaccess:1.0.3 (1 constraints: 160ae3b4)
 
-com.google.guava:guava:33.6.0-jre (25 constraints: 33ed5431)
+com.google.guava:guava:33.7.0-jre (25 constraints: 34edbd36)
 
 com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 constraints: bd17c918)
 
@@ -130,7 +130,7 @@ org.jboss.xnio:xnio-nio:3.8.16.Final (1 constraints: f80dc53d)
 
 org.jetbrains:annotations:26.1.0 (3 constraints: 36269a98)
 
-org.jspecify:jspecify:1.0.0 (20 constraints: 9d42438d)
+org.jspecify:jspecify:1.0.1 (20 constraints: 9e428e90)
 
 org.mpierce.metrics.reservoir:hdrhistogram-metrics-reservoir:1.1.3 (1 constraints: 0d10f991)
 
