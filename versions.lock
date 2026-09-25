@@ -34,11 +34,11 @@ com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 c
 
 com.google.j2objc:j2objc-annotations:3.1 (1 constraints: b809f1a0)
 
-com.palantir.conjure.java:conjure-java-undertow-runtime:8.87.0 (1 constraints: 4905843b)
+com.palantir.conjure.java:conjure-java-undertow-runtime:8.88.0 (1 constraints: 4a05873b)
 
-com.palantir.conjure.java:conjure-lib:8.87.0 (6 constraints: 416d9909)
+com.palantir.conjure.java:conjure-lib:8.88.0 (6 constraints: 436d2d0b)
 
-com.palantir.conjure.java:conjure-undertow-lib:8.87.0 (2 constraints: ad1c8bc7)
+com.palantir.conjure.java:conjure-undertow-lib:8.88.0 (2 constraints: ae1c8ec7)
 
 com.palantir.conjure.java.api:errors:2.79.0 (9 constraints: f8aef35e)
 
@@ -50,7 +50,7 @@ com.palantir.conjure.java.runtime:conjure-java-jackson-serialization:8.42.0 (3 c
 
 com.palantir.conjure.java.runtime:keystores:8.42.0 (2 constraints: 5f1978dd)
 
-com.palantir.deadlines:deadlines:0.27.0 (2 constraints: cb26c2d9)
+com.palantir.deadlines:deadlines:0.28.0 (2 constraints: cc26f2d9)
 
 com.palantir.nylon:nylon-threads:0.15.0 (1 constraints: 3e103ba2)
 
@@ -68,7 +68,7 @@ com.palantir.safe-logging:safe-logging:3.19.0 (25 constraints: 2fc48348)
 
 com.palantir.tokens:auth-tokens:4.9.0 (6 constraints: 1d6d3c5b)
 
-com.palantir.tracing:tracing:6.41.0 (7 constraints: ef7dcf8b)
+com.palantir.tracing:tracing:6.41.0 (7 constraints: f07dd08c)
 
 com.palantir.tracing:tracing-api:6.41.0 (5 constraints: 15587cd3)
 
