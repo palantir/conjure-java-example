@@ -2,9 +2,9 @@
 
 com.fasterxml.jackson.core:jackson-annotations:2.22 (13 constraints: 1ef31606)
 
-com.fasterxml.jackson.core:jackson-core:2.22.3 (13 constraints: 2120a6d2)
+com.fasterxml.jackson.core:jackson-core:2.22.3 (13 constraints: 25200cd6)
 
-com.fasterxml.jackson.core:jackson-databind:2.22.3 (18 constraints: 9d7997e2)
+com.fasterxml.jackson.core:jackson-databind:2.22.3 (18 constraints: a1792dea)
 
 com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.22.3 (2 constraints: 3d356cf1)
 
@@ -34,11 +34,11 @@ com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava (1 c
 
 com.google.j2objc:j2objc-annotations:3.1 (1 constraints: b809f1a0)
 
-com.palantir.conjure.java:conjure-java-undertow-runtime:8.90.0 (1 constraints: 4305733b)
+com.palantir.conjure.java:conjure-java-undertow-runtime:8.91.0 (1 constraints: 4405763b)
 
-com.palantir.conjure.java:conjure-lib:8.90.0 (6 constraints: 306d35fe)
+com.palantir.conjure.java:conjure-lib:8.91.0 (6 constraints: 326dc9ff)
 
-com.palantir.conjure.java:conjure-undertow-lib:8.90.0 (2 constraints: a71c7ac7)
+com.palantir.conjure.java:conjure-undertow-lib:8.91.0 (2 constraints: a81c7dc7)
 
 com.palantir.conjure.java.api:errors:2.80.0 (9 constraints: c8aee126)
 
